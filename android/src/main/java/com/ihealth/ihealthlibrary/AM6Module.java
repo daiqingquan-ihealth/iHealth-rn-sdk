@@ -491,6 +491,13 @@ public class AM6Module extends iHealthBaseModule {
         Am6Control control = getControl(mac);
         if (control != null) {
             control.rebootDevice();
+            
+            WritableMap params = Arguments.createMap();
+            params.putString("action", "am6_action_rebootDevice");
+            params.putString("mac", mac);
+            params.putString("type", "AM6");
+            sendEvent(EVENT_NOTIFY, params);
+
         } else {
             Log.e(TAG, "Can not find AM6 Control mac:" + mac);
         }

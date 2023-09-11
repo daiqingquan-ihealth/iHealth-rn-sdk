@@ -1133,7 +1133,12 @@ RCT_EXPORT_METHOD(connectDevice:(nonnull NSString *)mac type:(nonnull NSString *
         
     }else if ([deviceType isEqualToString:kType_AM6]){
         
-        [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_AM6 andSerialNub:mac];
+        
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_AM6 andSerialNub:mac];
+                });
+        
+       
         
     }
     

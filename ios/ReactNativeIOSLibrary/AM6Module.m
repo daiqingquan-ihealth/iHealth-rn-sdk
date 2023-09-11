@@ -100,7 +100,7 @@ RCT_EXPORT_METHOD(getAllConnectedDevices){
 }
 
 
-RCT_EXPORT_METHOD(getDeviceInfoAndSyncTime:(nonnull NSString *)mac){
+RCT_EXPORT_METHOD(getDeviceInfoAndSyncTime:(nonnull NSString *)mac :(int)flag){
     
     if ([self getAM6WithMac:mac]!=nil) {
         
@@ -122,7 +122,7 @@ RCT_EXPORT_METHOD(getDeviceInfoAndSyncTime:(nonnull NSString *)mac){
             
         } fail:^(int error) {
             
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error mac:mac];
             
         }];
     }else{
@@ -144,14 +144,30 @@ RCT_EXPORT_METHOD(setUserInfo:(nonnull NSString *)mac :(nonnull NSString *)userI
         [[self getAM6WithMac:mac] setUserInfoWithUserIdMD5:[AM6ProfileModule md5:userID] gender:gender age:age height:height weight:weight success:^{
             
             [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
-                                           AM6_ACTION:ACTION_SET_USER_INFO,
+                                           AM6_ACTION:ACTION_SET_USER,
                                            AM6_KEY_MAC:mac,
                                            AM6_TYPE:DEVICE_TYPE,
+                                           AM6_SET_USERINFO_RESULT:@1,
                                        }];
             
         } fail:^(int error) {
             
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            if(error==AM6DeviceError_WrongUserIDInput){
+                
+                [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
+                                               AM6_ACTION:ACTION_SET_USER,
+                                               AM6_KEY_MAC:mac,
+                                               AM6_TYPE:DEVICE_TYPE,
+                                               AM6_SET_USERINFO_RESULT:@0,
+                                           }];
+                
+            }else{
+              
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
+                
+            }
+            
+           
         }];
     }else{
         
@@ -176,7 +192,7 @@ RCT_EXPORT_METHOD(setPhonePlatform:(nonnull NSString *)mac){
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -185,18 +201,25 @@ RCT_EXPORT_METHOD(setPhonePlatform:(nonnull NSString *)mac){
     }
     
 }
-RCT_EXPORT_METHOD(findDevice:(nonnull NSString *)mac){
+RCT_EXPORT_METHOD(findDevice:(nonnull NSString *)mac :(int)flag){
     
     if ([self getAM6WithMac:mac]!=nil) {
         
         __weak typeof(self) weakSelf = self;
         
-        [[self getAM6WithMac:mac] findDevice:0 success:^{
+        [[self getAM6WithMac:mac] findDevice:flag success:^{
+            
+            [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
+                                           AM6_ACTION:ACTION_FIND_DEVICE,
+                                           AM6_KEY_MAC:mac,
+                                           AM6_TYPE:DEVICE_TYPE,
+                                           AM6_FIND_DEVICE_STATUS:@1,
+                                       }];
             
             
         } fail:^(int error) {
             
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             
         }];
     }else{
@@ -210,27 +233,27 @@ RCT_EXPORT_METHOD(findDevice:(nonnull NSString *)mac){
 - (void)am6StartFindPhoneNoti:(NSNotification *)noti{
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
-                                   AM6_ACTION:ACTION_FIND_DEVICE,
-                                   AM6_KEY_MAC:self.deviceMac,
+                                   AM6_ACTION:ACTION_FIND_PHONE,
+                                   AM6_KEY_MAC:[[noti userInfo] valueForKey:AM6_KEY_MAC],
                                    AM6_TYPE:DEVICE_TYPE,
-                                   AM6_FIND_DEVICE_STATUS:@1
+                                   AM6_FIND_PHONE_STATUS:@0
                                }];
 }
 
 - (void)am6StopFindPhoneNoti:(NSNotification *)noti{
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
-                                   AM6_ACTION:ACTION_FIND_DEVICE,
-                                   AM6_KEY_MAC:self.deviceMac,
+                                   AM6_ACTION:ACTION_FIND_PHONE,
+                                   AM6_KEY_MAC:[[noti userInfo] valueForKey:AM6_KEY_MAC],
                                    AM6_TYPE:DEVICE_TYPE,
-                                   AM6_FIND_DEVICE_STATUS:@0
+                                   AM6_FIND_PHONE_STATUS:@1
                                }];
 }
 
 
 RCT_EXPORT_METHOD(notifyMessage:(nonnull NSString *)mac :(int)time :(int)enable :(int)flag :(nonnull NSString *)title :(nonnull NSString *)detail){
     
-    [AM6ProfileModule sendErrorToBridge:self.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:404];
+    [AM6ProfileModule sendErrorToBridge:self.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:404 mac:mac];
     
 }
 
@@ -253,7 +276,7 @@ RCT_EXPORT_METHOD(rebootDevice:(nonnull NSString *)mac){
             
         } fail:^(int error) {
             
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             
         }];
     }else{
@@ -283,7 +306,7 @@ RCT_EXPORT_METHOD(getTime:(nonnull NSString *)mac){
             
         } fail:^(int error) {
             
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -309,7 +332,7 @@ RCT_EXPORT_METHOD(setTargetRemind:(nonnull NSString *)mac :(BOOL)enable :(NSInte
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -338,7 +361,7 @@ RCT_EXPORT_METHOD(getTargetRemind:(nonnull NSString *)mac){
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -364,7 +387,7 @@ RCT_EXPORT_METHOD(setSedentaryRemind:(nonnull NSString *)mac :(BOOL)enable :(NSI
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -391,7 +414,7 @@ RCT_EXPORT_METHOD(getSedentaryRemind:(nonnull NSString *)mac){
                                            AM6_GET_SENDENTARY_ENABLE:@([weakSelf getAM6WithMac:mac].isStretchReminderOn),
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -418,7 +441,7 @@ RCT_EXPORT_METHOD(setRaiseToLightRemind:(nonnull NSString *)mac :(BOOL)enable :(
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -445,7 +468,7 @@ RCT_EXPORT_METHOD(getRaiseToLightRemind:(nonnull NSString *)mac){
                                            AM6_GET_RAISE_ENABLE:@([weakSelf getAM6WithMac:mac].isRaiseToWakeOn),
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -471,7 +494,7 @@ RCT_EXPORT_METHOD(setDoNotDisturbMode:(nonnull NSString *)mac :(BOOL)enable :(NS
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -498,7 +521,7 @@ RCT_EXPORT_METHOD(getDoNotDisturbMode:(nonnull NSString *)mac){
                                            AM6_GET_DONOTDISTURB_ENABLE:@([weakSelf getAM6WithMac:mac].isDoNotDisturbOn),
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -524,7 +547,7 @@ RCT_EXPORT_METHOD(setWearHand:(nonnull NSString *)mac :(NSInteger)hand){
                                        }];
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -540,7 +563,7 @@ RCT_EXPORT_METHOD(getWearHand:(nonnull NSString *)mac){
         
         __weak typeof(self) weakSelf = self;
         
-        [[self getAM6WithMac:mac] queryNotDisturbWithSuccess:^{
+        [[self getAM6WithMac:mac] queryWearHandWithSuccess:^{
             [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
                                            AM6_ACTION:ACTION_GET_WEARHAND,
                                            AM6_KEY_MAC:mac,
@@ -550,7 +573,7 @@ RCT_EXPORT_METHOD(getWearHand:(nonnull NSString *)mac){
                     
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -559,17 +582,43 @@ RCT_EXPORT_METHOD(getWearHand:(nonnull NSString *)mac){
     
 }
 
+//If the passed list is an empty string, it means deleting all alarm clocks in AM6
+
 RCT_EXPORT_METHOD(setAlarmClockList:(nonnull NSString *)mac :(nonnull NSString *)list){
     
     if ([self getAM6WithMac:mac]!=nil) {
         
         __weak typeof(self) weakSelf = self;
         
+        
+        if(list.length==0){
+            
+            [[self getAM6WithMac:mac] setAlartList:[NSArray array] success:^{
+                
+                [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
+                                               AM6_ACTION:ACTION_SET_ALARMLIST,
+                                               AM6_KEY_MAC:mac,
+                                               AM6_TYPE:DEVICE_TYPE,
+                                               AM6_SET_ALARMLIST_LIST:@1,
+                        
+                                           }];
+                
+                
+            } fail:^(int error) {
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
+            }];
+            
+            return;
+            
+        }
+        
+        
+        
         NSArray*array=[list componentsSeparatedByString:@";"];
         
-        if(list.length==0 || array.count==0){
+        if(array.count==0){
            
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:AM6DeviceError_InputParameterError];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:AM6DeviceError_InputParameterError mac:mac];
             
             return;
         }
@@ -582,7 +631,7 @@ RCT_EXPORT_METHOD(setAlarmClockList:(nonnull NSString *)mac :(nonnull NSString *
             
             if(tempArray.count!=3){
                 
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:AM6DeviceError_InputParameterError];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:AM6DeviceError_InputParameterError mac:mac];
                 
                 return;
                 
@@ -590,28 +639,32 @@ RCT_EXPORT_METHOD(setAlarmClockList:(nonnull NSString *)mac :(nonnull NSString *
                 
                 AM6AlarmModel *model = [AM6AlarmModel new];
                 
-                model.isOn=[tempArray objectAtIndex:0];
+                model.isOn=[[tempArray objectAtIndex:0] boolValue];
                 
                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
                 dateFormatter.dateFormat = @"HHmm";
                 dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
                 
                 NSArray*repeatArray=[[tempArray objectAtIndex:1] componentsSeparatedByString:@"-"];
+    
                 
-                uint8_t tempRepeatMode[7];
+                uint8_t mode=0;
                 
-                for (int j=0; j<repeatArray.count; j++) {
+                for (int j=0; j<7; j++) {
                     
-                    tempRepeatMode[j]=[[repeatArray objectAtIndex:j] intValue];
+                    if ([[repeatArray objectAtIndex:j] intValue]) {
+                        mode |= (0x01 << j);
+                    } else {
+                        mode &= ~(0x01 << j);
+                    }
                 }
                 
-                model.repeatMode=tempRepeatMode;
+                model.repeatMode=mode;
                
                 struct AM6DateStruct alarmDate = {0};
-                NSRange hourrange={0,2};
-                NSRange minrange={2,2};
-                alarmDate.hour=(uint32_t)[[[tempArray objectAtIndex:2] substringWithRange:hourrange] intValue];
-                alarmDate.min=(uint32_t)[[[tempArray objectAtIndex:2] substringWithRange:minrange] intValue];
+               
+                alarmDate.hour=[[tempArray objectAtIndex:2] intValue]/60;
+                alarmDate.min=[[tempArray objectAtIndex:2] intValue]%60;
                 model.date=alarmDate;
                 
                 [mArr addObject:model];
@@ -634,7 +687,7 @@ RCT_EXPORT_METHOD(setAlarmClockList:(nonnull NSString *)mac :(nonnull NSString *
             
             
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -664,7 +717,19 @@ RCT_EXPORT_METHOD(getAlarmClockList:(nonnull NSString *)mac){
                 
                 [alarmDic setValue:@(model.isOn) forKey:AM6_GET_ALARMLIST_ENABLE];
                 [alarmDic setValue:@(model.date.hour*60+model.date.min) forKey:AM6_GET_ALARMLIST_TIME];
-                [alarmDic setValue:@(model.repeatMode) forKey:AM6_GET_ALARMLIST_WEEK];
+                uint8_t mode=model.repeatMode;
+                NSMutableArray *mArr = [NSMutableArray new];
+                for (uint8_t i=0; i<7; i++) {
+                    if ((mode>>i & 0x01) == 0x01) {
+                       
+                        [mArr addObject:@1];
+                    }else{
+                        
+                        [mArr addObject:@0];
+                    }
+                }
+                
+                [alarmDic setValue:mArr forKey:AM6_GET_ALARMLIST_WEEK];
                 
                 [alarmArrayResult addObject:alarmDic];
                 
@@ -675,10 +740,10 @@ RCT_EXPORT_METHOD(getAlarmClockList:(nonnull NSString *)mac){
                                            AM6_KEY_MAC:mac,
                                            AM6_TYPE:DEVICE_TYPE,
                                            AM6_GET_ALARMLIST_LIST:alarmArrayResult,
-                    
+                                           AM6_GET_ALARMLIST_STATUS:@1,
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
     }else{
         
@@ -704,7 +769,7 @@ RCT_EXPORT_METHOD(startBind:(nonnull NSString *)mac){
                     
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -731,7 +796,7 @@ RCT_EXPORT_METHOD(bindUserSuccess:(nonnull NSString *)mac :(nonnull NSString *)u
                     
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -756,7 +821,7 @@ RCT_EXPORT_METHOD(bindUserFail:(nonnull NSString *)mac){
                     
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
         }];
         
     }else{
@@ -782,7 +847,22 @@ RCT_EXPORT_METHOD(unBindUser:(nonnull NSString *)mac :(nonnull NSString *)userID
                                            AM6_SET_UNBIND:@1,
                                        }];
         } fail:^(int error) {
-            [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+            
+            if(error == AM6DeviceError_ActionFail){
+                
+                [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
+                                               AM6_ACTION:ACTION_SET_UNBIND,
+                                               AM6_KEY_MAC:mac,
+                                               AM6_TYPE:DEVICE_TYPE,
+                                               AM6_SET_UNBIND:@0,
+                                           }];
+                
+            }else{
+                
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
+            }
+            
+           
         }];
         
     }else{
@@ -810,7 +890,7 @@ RCT_EXPORT_METHOD(readySyncData:(nonnull NSString *)mac){
             }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -863,7 +943,7 @@ RCT_EXPORT_METHOD(getDailyData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -893,10 +973,18 @@ RCT_EXPORT_METHOD(getStepData:(nonnull NSString *)mac){
                     
                     AM6DeviceDailyStepModel*model=[dailyArray objectAtIndex:i];
                     
-                    [dailyDic setValue:model.distanceArray forKey:AM6_GET_STEPDATA_DISTANCE];
-                    [dailyDic setValue:model.calorieArray forKey:AM6_GET_STEPDATA_CALORIE];
+                    NSMutableArray*dailyArrayList=[NSMutableArray array];
+                    
+                    for (int j=0; j<model.distanceArray.count; j++) {
+                        NSMutableDictionary*tempDic=[NSMutableDictionary dictionary];
+                        [tempDic setValue:model.distanceArray[j] forKey:AM6_GET_STEPDATA_DISTANCE];
+                        [tempDic setValue:model.calorieArray[j] forKey:AM6_GET_STEPDATA_CALORIE];
+                        [tempDic setValue:model.stepsArray[j] forKey:AM6_GET_STEPDATA_STEP];
+                        [dailyArrayList addObject:tempDic];
+                    }
+                    
                     [dailyDic setValue:model.dateString forKey:AM6_GET_STEPDATA_DATE];
-                    [dailyDic setValue:model.stepsArray forKey:AM6_GET_STEPDATA_STEP];
+                    [dailyDic setValue:dailyArrayList forKey:AM6_GET_STEPDATA_LIST];
                     
                     [dailyArrayResult addObject:dailyDic];
                     
@@ -910,7 +998,7 @@ RCT_EXPORT_METHOD(getStepData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -940,13 +1028,13 @@ RCT_EXPORT_METHOD(getSleepData:(nonnull NSString *)mac){
                     
                     [sleepDic setValue:model.dateString forKey:AM6_GET_SLEEPDATA_DATE];
                     
-                    NSMutableArray*sleepItemArray=[model.dataArray copy];
+                    NSMutableArray*sleepItemArray=[NSMutableArray array];
                     
-                    for (int j=0; j<sleepItemArray.count; j++) {
+                    for (int j=0; j<model.dataArray.count; j++) {
                         
                         NSMutableDictionary*sleepItemDic=[NSMutableDictionary dictionary];
                         
-                        AM6DeviceSleepItem*itemMode=[sleepItemArray objectAtIndex:j];
+                        AM6DeviceSleepItem*itemMode=[model.dataArray objectAtIndex:j];
                         
                         [sleepItemDic setValue:itemMode.timeString forKey:AM6_GET_SLEEPDATA_MODE_DATE];
                         [sleepItemDic setValue:@(itemMode.status) forKey:AM6_GET_SLEEPDATA_MODE];
@@ -969,7 +1057,7 @@ RCT_EXPORT_METHOD(getSleepData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -1000,7 +1088,18 @@ RCT_EXPORT_METHOD(getHeartRateData:(nonnull NSString *)mac){
                     
                     [heartRateDic setValue:model.dateString forKey:AM6_GET_HEARTRATE_DATE];
                     
-                    [heartRateDic setValue:model.dataArray forKey:AM6_GET_HEARTRATE_LIST];
+                    NSMutableArray*heartRateArrayList=[NSMutableArray array];
+                    
+                    for (int j=0; j<model.dataArray.count; j++) {
+                        
+                        NSMutableDictionary*tempDic=[NSMutableDictionary dictionary];
+                        
+                        [tempDic setValue:model.dataArray[j] forKey:AM6_GET_HEARTRATE_HEARTRATE];
+                        
+                        [heartRateArrayList addObject:tempDic];
+                    }
+                    
+                    [heartRateDic setValue:heartRateArrayList forKey:AM6_GET_HEARTRATE_LIST];
                     
                     [heartRateResult addObject:heartRateDic];
                     
@@ -1014,7 +1113,7 @@ RCT_EXPORT_METHOD(getHeartRateData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -1045,7 +1144,7 @@ RCT_EXPORT_METHOD(getBloodOxygenData:(nonnull NSString *)mac){
                     
                     [oxDic setValue:model.dateString forKey:AM6_GET_BLOODOXYGEN_DATE];
                     
-                    [oxDic setValue:@(model.value) forKey:AM6_GET_HEARTRATE_LIST];
+                    [oxDic setValue:@(model.value) forKey:AM6_GET_BLOODOXYGEN_BLOODOXYGEN];
                     
                     [oxArrayResult addObject:oxDic];
                     
@@ -1059,7 +1158,7 @@ RCT_EXPORT_METHOD(getBloodOxygenData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -1090,13 +1189,13 @@ RCT_EXPORT_METHOD(getActivityData:(nonnull NSString *)mac){
                     
                     AM6DeviceIndoorRun*model=[sportArray objectAtIndex:i];
                     
-                    NSMutableArray*sportItemArray=[model.dataArray copy];
+                    NSMutableArray*sportItemArray=[NSMutableArray array];
                     
-                    for (int j=0; j<sportItemArray.count; j++) {
+                    for (int j=0; j<model.dataArray.count; j++) {
                         
                         NSMutableDictionary*sportItemDic=[NSMutableDictionary dictionary];
                         
-                        AM6DeviceIndoorRunPart*itemMode=[sportItemArray objectAtIndex:j];
+                        AM6DeviceIndoorRunPart*itemMode=[model.dataArray objectAtIndex:j];
                         
                         [sportItemDic setValue:itemMode.dateString forKey:AM6_GET_ACTIVITYPOINT_DATE];
                         [sportItemDic setValue:itemMode.calorieArray forKey:AM6_GET_ACTIVITYPOINT_CALORIE];
@@ -1140,8 +1239,13 @@ RCT_EXPORT_METHOD(getActivityData:(nonnull NSString *)mac){
                     [sportReportDic setValue:@(model.totalTime) forKey:AM6_GET_ACTIVITY_TOTLETIME];
                     [sportReportDic setValue:@(model.trainingEffect) forKey:AM6_GET_ACTIVITY_TRAININGEF];
                     [sportReportDic setValue:@(model.warmUpTime) forKey:AM6_GET_ACTIVITY_WARMUPTIME];
+                    
+                    
+                    NSMutableDictionary*tempReportResultDic=[NSMutableDictionary dictionary];
+                    
+                    [tempReportResultDic setValue:sportReportDic forKey:AM6_GET_ACTIVITY_REPORT];
 
-                    [sportArrayResult addObject:sportReportDic];
+                    [sportArrayResult addObject:tempReportResultDic];
                     
                 }
                 
@@ -1153,7 +1257,7 @@ RCT_EXPORT_METHOD(getActivityData:(nonnull NSString *)mac){
                 }];
                 
             } fail:^(int error) {
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{
@@ -1172,14 +1276,29 @@ RCT_EXPORT_METHOD(deleteData:(nonnull NSString *)mac :(int)type){
             [[self getAM6WithMac:mac] deleteDataWithType:type success:^{
                 
                 [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
-                    AM6_ACTION:AM6_DELETE_DATA,
+                    AM6_ACTION:ACTION_DELETEDATA,
                     AM6_KEY_MAC:mac,
                     AM6_TYPE:DEVICE_TYPE,
+                    AM6_DELETEDATA_RESULT:@1,
                 }];
                 
             } fail:^(int error) {
                 
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                if(error==AM6DeviceError_ActionFail){
+                    
+                    [weakSelf.bridge.eventDispatcher sendDeviceEventWithName:AM6_EVENT_NOTIFY body:@{
+                        AM6_ACTION:ACTION_DELETEDATA,
+                        AM6_KEY_MAC:mac,
+                        AM6_TYPE:DEVICE_TYPE,
+                        AM6_DELETEDATA_RESULT:@0,
+                    }];
+                    
+                }else{
+                    
+                    [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
+                }
+                
+               
             }];
             
         }else{
@@ -1207,7 +1326,7 @@ RCT_EXPORT_METHOD(disconnect:(nonnull NSString *)mac){
                 
             } fail:^(int error) {
                
-                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error];
+                [AM6ProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:AM6_EVENT_NOTIFY WithCode:error  mac:mac];
             }];
             
         }else{

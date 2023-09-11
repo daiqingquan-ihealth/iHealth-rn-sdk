@@ -42,13 +42,18 @@
 
 #define AM6_GETDEVICEINFO_KEY_VERSION @"am6_getDeviceInfo_sdk_version"
 
-//getDeviceInfoAndSetTime
-#define ACTION_SET_USER_INFO @"am6_action_setUserInfo"
+
+#define ACTION_SET_USER @"am6_action_setUser"
+
+#define AM6_SET_USERINFO_RESULT @"am6_setUser_result"
 
 #define ACTION_SET_PHONEPLATFORM @"am6_action_setPhonePlatform"
 
 #define ACTION_FIND_DEVICE @"am6_action_findDevice"
 #define AM6_FIND_DEVICE_STATUS @"am6_findDevice_status"
+
+#define ACTION_FIND_PHONE @"am6_action_findPhone"
+#define AM6_FIND_PHONE_STATUS @"am6_findPhone_status"
 
 #define ACTION_REBOOT_DEVICE @"am6_action_rebootDevice"
 
@@ -100,13 +105,15 @@
 #define AM6_GET_WEARHAND_RESULT @"am6_getWearHand_result"
 
 #define ACTION_SET_ALARMLIST @"am6_action_setAlarmClockList"
-#define AM6_SET_ALARMLIST_LIST @"am6_setAlarmClockList_status"
+#define AM6_SET_ALARMLIST_LIST @"am6_setAlarmClockList_Status"
 
 #define ACTION_GET_ALARMLIST @"am6_action_getAlarmClockList"
 #define AM6_GET_ALARMLIST_LIST @"am6_getAlarmClockList_list"
 #define AM6_GET_ALARMLIST_ENABLE @"am6_getAlarmClockList_enable"
 #define AM6_GET_ALARMLIST_TIME @"am6_getAlarmClockList_time"
 #define AM6_GET_ALARMLIST_WEEK @"am6_getAlarmClockList_week"
+#define AM6_GET_ALARMLIST_STATUS @"am6_getAlarmClockList_status"
+
 
 
 #define ACTION_SET_STARTBIND @"am6_action_startBind"
@@ -190,7 +197,7 @@
 
 #define AM6_GET_ACTIVITY_DATE @"am6_getActivityData_date"
 
-#define AM6_GET_ACTIVITYPOINT_DATE @"getActivityDataPoint_Date"
+#define AM6_GET_ACTIVITYPOINT_DATE @"am6_getActivityDataPoint_Date"
 #define AM6_GET_ACTIVITYPOINT_CALORIE @"am6_getActivityDataPoint_calorie"
 #define AM6_GET_ACTIVITYPOINT_DISTANCE @"am6_getActivityDataPoint_distance"
 #define AM6_GET_ACTIVITYPOINT_HEARTRATE @"am6_getActivityDataPoint_heartRate"
@@ -198,7 +205,8 @@
 #define AM6_GET_ACTIVITYPOINT @"am6_getActivityData_point"
 
 
-#define AM6_DELETE_DATA @"am6_delete_data"
+#define ACTION_DELETEDATA @"am6_action_deleteData"
+#define AM6_DELETEDATA_RESULT @"am6_deleteData_result"
 
 #define AM6_DISCONNECT_DEVICE @"am6_disconnect_device"
 
@@ -206,14 +214,14 @@
 
 #define ERROR_NUM_AM6                   @"error_num"
 
-#define ERROR_DESCRIPTION_AM6                   @"error_description"
+#define ERROR_DESCRIPTION_AM6                   @"description"
 
 #define ACTION_DISCONNECT_AM6                  @"disconnect"
 
 
 
 
-+ (void)sendErrorToBridge:(RCTBridge *)bridge eventNotify:(NSString*)eventNotify WithCode:(NSInteger)errorCode;
++ (void)sendErrorToBridge:(RCTBridge *)bridge eventNotify:(NSString*)eventNotify WithCode:(NSInteger)errorCode mac:(NSString*)mac;
 
 + (NSData *)md5:(NSString *)hashString;
 
