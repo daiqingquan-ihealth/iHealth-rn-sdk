@@ -24,8 +24,8 @@
 		3F31C42B21ABE80400811B02 /* HS2Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F31C42A21ABE80400811B02 /* HS2Module.m */; };
 		4565653F26E0BDE7007DA850 /* AM5Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 4565653D26E0BDE6007DA850 /* AM5Module.m */; };
 		4565654026E0BDE7007DA850 /* AM5ProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4565653E26E0BDE7007DA850 /* AM5ProfileModule.m */; };
-		4591A7592A9758F600D19876 /* iHealthSDK2.10.0_beta13.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591A7582A9758F500D19876 /* iHealthSDK2.10.0_beta13.a */; };
 		45A72D18256E5FCB00825201 /* BP7Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A72D16256E5FCB00825201 /* BP7Module.m */; };
+		45A870EA2AAF11CC00C2A284 /* iHealthSDK2.10.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45A870E92AAF11CC00C2A284 /* iHealthSDK2.10.0.a */; };
 		8CCCE9B21E5ADF49007F7FE4 /* PO3Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCE9AF1E5ADF49007F7FE4 /* PO3Module.m */; };
 		8CCCE9B31E5ADF49007F7FE4 /* POProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCE9B11E5ADF49007F7FE4 /* POProfileModule.m */; };
 		8CCCE9E31E5E7C58007F7FE4 /* HS6ProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCE9E21E5E7C58007F7FE4 /* HS6ProfileModule.m */; };
@@ -101,164 +101,164 @@
 		4565653C26E0BDE6007DA850 /* AM5ProfileModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5ProfileModule.h; sourceTree = "<group>"; };
 		4565653D26E0BDE6007DA850 /* AM5Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AM5Module.m; sourceTree = "<group>"; };
 		4565653E26E0BDE7007DA850 /* AM5ProfileModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AM5ProfileModule.m; sourceTree = "<group>"; };
-		4591A6BD2A9758F500D19876 /* IDOSyncBpDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncBpDataModel.h; sourceTree = "<group>"; };
-		4591A6BE2A9758F500D19876 /* BPContinua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinua.h; sourceTree = "<group>"; };
-		4591A6BF2A9758F500D19876 /* IDOWeightBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWeightBluetoothModel.h; sourceTree = "<group>"; };
-		4591A6C02A9758F500D19876 /* IHDeviceSDKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHDeviceSDKLog.h; sourceTree = "<group>"; };
-		4591A6C12A9758F500D19876 /* ScanDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanDeviceController.h; sourceTree = "<group>"; };
-		4591A6C22A9758F500D19876 /* AM5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5.h; sourceTree = "<group>"; };
-		4591A6C32A9758F500D19876 /* ECGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGHeader.h; sourceTree = "<group>"; };
-		4591A6C42A9758F500D19876 /* HS5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS5.h; sourceTree = "<group>"; };
-		4591A6C52A9758F500D19876 /* DFUHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUHeader.h; sourceTree = "<group>"; };
-		4591A6C62A9758F500D19876 /* AM5Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5Header.h; sourceTree = "<group>"; };
-		4591A6C72A9758F500D19876 /* HS2SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SController.h; sourceTree = "<group>"; };
-		4591A6C82A9758F500D19876 /* IDODataExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDODataExchangeModel.h; sourceTree = "<group>"; };
-		4591A6C92A9758F500D19876 /* BP5CController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5CController.h; sourceTree = "<group>"; };
-		4591A6CA2A9758F500D19876 /* BPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPController.h; sourceTree = "<group>"; };
-		4591A6CB2A9758F500D19876 /* HS3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS3Controller.h; sourceTree = "<group>"; };
-		4591A6CC2A9758F500D19876 /* IDOGetInfoBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOGetInfoBluetoothModel.h; sourceTree = "<group>"; };
-		4591A6CD2A9758F500D19876 /* BPBTLEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBTLEDevice.h; sourceTree = "<group>"; };
-		4591A6CE2A9758F500D19876 /* NT13B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13B.h; sourceTree = "<group>"; };
-		4591A6CF2A9758F500D19876 /* BP7Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7Controller.h; sourceTree = "<group>"; };
-		4591A6D02A9758F500D19876 /* BPAV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAV10Device.h; sourceTree = "<group>"; };
-		4591A6D12A9758F500D19876 /* BGMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMacroFile.h; sourceTree = "<group>"; };
-		4591A6D22A9758F500D19876 /* AM5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5Controller.h; sourceTree = "<group>"; };
-		4591A6D32A9758F500D19876 /* HS2SPROController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SPROController.h; sourceTree = "<group>"; };
-		4591A6D42A9758F500D19876 /* PT3SBT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBT.h; sourceTree = "<group>"; };
-		4591A6D52A9758F500D19876 /* HSMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSMacroFile.h; sourceTree = "<group>"; };
-		4591A6D62A9758F500D19876 /* IDOCalculateBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOCalculateBluetoothModel.h; sourceTree = "<group>"; };
-		4591A6D72A9758F500D19876 /* AMMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMMacroFile.h; sourceTree = "<group>"; };
-		4591A6D82A9758F500D19876 /* IDOTransferFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOTransferFileManager.h; sourceTree = "<group>"; };
-		4591A6D92A9758F500D19876 /* SDKFlowUpdateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKFlowUpdateDevice.h; sourceTree = "<group>"; };
-		4591A6DA2A9758F500D19876 /* BPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPDevice.h; sourceTree = "<group>"; };
-		4591A6DB2A9758F500D19876 /* POHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POHeader.h; sourceTree = "<group>"; };
-		4591A6DC2A9758F500D19876 /* SDKUpdateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKUpdateDevice.h; sourceTree = "<group>"; };
-		4591A6DD2A9758F500D19876 /* BP5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5.h; sourceTree = "<group>"; };
-		4591A6DE2A9758F500D19876 /* BPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHeader.h; sourceTree = "<group>"; };
-		4591A6DF2A9758F500D19876 /* ABIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABIController.h; sourceTree = "<group>"; };
-		4591A6E02A9758F500D19876 /* TS28B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28B.h; sourceTree = "<group>"; };
-		4591A6E12A9758F500D19876 /* HFSmartLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmartLink.h; sourceTree = "<group>"; };
-		4591A6E22A9758F500D19876 /* BP5SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SController.h; sourceTree = "<group>"; };
-		4591A6E32A9758F500D19876 /* ConnectDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectDeviceController.h; sourceTree = "<group>"; };
-		4591A6E42A9758F500D19876 /* BG5S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5S.h; sourceTree = "<group>"; };
-		4591A6E52A9758F500D19876 /* BP5S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5S.h; sourceTree = "<group>"; };
-		4591A6E62A9758F500D19876 /* THV3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3.h; sourceTree = "<group>"; };
-		4591A6E72A9758F500D19876 /* AM6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6.h; sourceTree = "<group>"; };
-		4591A6E82A9758F500D19876 /* BG1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1.h; sourceTree = "<group>"; };
-		4591A6E92A9758F500D19876 /* BG1SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1SController.h; sourceTree = "<group>"; };
-		4591A6EA2A9758F500D19876 /* HS5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS5Controller.h; sourceTree = "<group>"; };
-		4591A6EB2A9758F500D19876 /* HS2SPRO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SPRO.h; sourceTree = "<group>"; };
-		4591A6EC2A9758F500D19876 /* BG5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5.h; sourceTree = "<group>"; };
-		4591A6ED2A9758F500D19876 /* ManageDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageDeviceController.h; sourceTree = "<group>"; };
-		4591A6EE2A9758F500D19876 /* BGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDevice.h; sourceTree = "<group>"; };
-		4591A6EF2A9758F500D19876 /* IDOErrorCodeToStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOErrorCodeToStr.h; sourceTree = "<group>"; };
-		4591A6F02A9758F500D19876 /* THV3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3Controller.h; sourceTree = "<group>"; };
-		4591A6F12A9758F500D19876 /* BP5SRWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRWController.h; sourceTree = "<group>"; };
-		4591A6F22A9758F500D19876 /* AM6Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6Controller.h; sourceTree = "<group>"; };
-		4591A6F32A9758F500D19876 /* BG1S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1S.h; sourceTree = "<group>"; };
-		4591A6F42A9758F500D19876 /* HS2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2.h; sourceTree = "<group>"; };
-		4591A6F52A9758F500D19876 /* PO1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO1Controller.h; sourceTree = "<group>"; };
-		4591A6F62A9758F500D19876 /* BGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHeader.h; sourceTree = "<group>"; };
-		4591A6F72A9758F500D19876 /* DFUController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUController.h; sourceTree = "<group>"; };
-		4591A6F82A9758F500D19876 /* PO3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO3.h; sourceTree = "<group>"; };
-		4591A6F92A9758F500D19876 /* BP3LController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3LController.h; sourceTree = "<group>"; };
-		4591A6FA2A9758F500D19876 /* IDOSyncHeartRateDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncHeartRateDataModel.h; sourceTree = "<group>"; };
-		4591A6FB2A9758F500D19876 /* NT13BHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BHeader.h; sourceTree = "<group>"; };
-		4591A6FC2A9758F500D19876 /* BG5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5Controller.h; sourceTree = "<group>"; };
-		4591A6FD2A9758F500D19876 /* AM3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3Controller.h; sourceTree = "<group>"; };
-		4591A6FE2A9758F500D19876 /* BPM1AE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPM1AE.h; sourceTree = "<group>"; };
-		4591A6FF2A9758F500D19876 /* BG1A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1A.h; sourceTree = "<group>"; };
-		4591A7002A9758F500D19876 /* ABPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPM.h; sourceTree = "<group>"; };
-		4591A7012A9758F500D19876 /* IDOLogEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOLogEnum.h; sourceTree = "<group>"; };
-		4591A7022A9758F500D19876 /* IDOSyncGpsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncGpsDataModel.h; sourceTree = "<group>"; };
-		4591A7032A9758F500D19876 /* HealthHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthHeader.h; sourceTree = "<group>"; };
-		4591A7042A9758F500D19876 /* IDOSyncPressureDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncPressureDataModel.h; sourceTree = "<group>"; };
-		4591A7052A9758F500D19876 /* IDOSyncSwimDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSwimDataModel.h; sourceTree = "<group>"; };
-		4591A7062A9758F500D19876 /* HSHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSHeader.h; sourceTree = "<group>"; };
-		4591A7072A9758F500D19876 /* DFUMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUMacro.h; sourceTree = "<group>"; };
-		4591A7082A9758F500D19876 /* IDOTranEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOTranEnum.h; sourceTree = "<group>"; };
-		4591A7092A9758F500D19876 /* BG5SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5SController.h; sourceTree = "<group>"; };
-		4591A70A2A9758F500D19876 /* AM3S_V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3S_V2.h; sourceTree = "<group>"; };
-		4591A70B2A9758F500D19876 /* IDOCommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOCommonMacro.h; sourceTree = "<group>"; };
-		4591A70C2A9758F500D19876 /* IDORecordDeviceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDORecordDeviceLog.h; sourceTree = "<group>"; };
-		4591A70D2A9758F500D19876 /* ABPMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPMController.h; sourceTree = "<group>"; };
-		4591A70E2A9758F500D19876 /* NT13BMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BMacroFile.h; sourceTree = "<group>"; };
-		4591A70F2A9758F500D19876 /* POMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POMacroFile.h; sourceTree = "<group>"; };
-		4591A7102A9758F500D19876 /* IDOSyncEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncEnum.h; sourceTree = "<group>"; };
-		4591A7112A9758F500D19876 /* POErrorTimeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POErrorTimeClass.h; sourceTree = "<group>"; };
-		4591A7122A9758F500D19876 /* AM3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3.h; sourceTree = "<group>"; };
-		4591A7132A9758F500D19876 /* IDOSyncSpo2DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSpo2DataModel.h; sourceTree = "<group>"; };
-		4591A7142A9758F500D19876 /* KN550BTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KN550BTController.h; sourceTree = "<group>"; };
-		4591A7152A9758F500D19876 /* IDODataMigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDODataMigrationManager.h; sourceTree = "<group>"; };
-		4591A7162A9758F500D19876 /* BP7S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7S.h; sourceTree = "<group>"; };
-		4591A7172A9758F500D19876 /* PO3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO3Controller.h; sourceTree = "<group>"; };
-		4591A7182A9758F500D19876 /* HS3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS3.h; sourceTree = "<group>"; };
-		4591A7192A9758F500D19876 /* AM4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM4Controller.h; sourceTree = "<group>"; };
-		4591A71A2A9758F500D19876 /* BPV25Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPV25Device.h; sourceTree = "<group>"; };
-		4591A71B2A9758F500D19876 /* PT3SBTMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBTMacroFile.h; sourceTree = "<group>"; };
-		4591A71C2A9758F500D19876 /* HS2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2Controller.h; sourceTree = "<group>"; };
-		4591A71D2A9758F500D19876 /* BP7SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7SController.h; sourceTree = "<group>"; };
-		4591A71E2A9758F500D19876 /* BPContinuaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinuaController.h; sourceTree = "<group>"; };
-		4591A71F2A9758F500D19876 /* BP3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3.h; sourceTree = "<group>"; };
-		4591A7202A9758F500D19876 /* IDOPeripheralModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOPeripheralModel.h; sourceTree = "<group>"; };
-		4591A7212A9758F500D19876 /* AMHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMHeader.h; sourceTree = "<group>"; };
-		4591A7222A9758F500D19876 /* BP3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3Controller.h; sourceTree = "<group>"; };
-		4591A7232A9758F500D19876 /* ECGMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGMacroFile.h; sourceTree = "<group>"; };
-		4591A7242A9758F500D19876 /* BPV24Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPV24Device.h; sourceTree = "<group>"; };
-		4591A7252A9758F500D19876 /* ECG3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3.h; sourceTree = "<group>"; };
-		4591A7262A9758F500D19876 /* IDOBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothManager.h; sourceTree = "<group>"; };
-		4591A7272A9758F500D19876 /* BPMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMacroFile.h; sourceTree = "<group>"; };
-		4591A7282A9758F500D19876 /* IDOBlueDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBlueDataResponse.h; sourceTree = "<group>"; };
-		4591A7292A9758F500D19876 /* ECG3USBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3USBController.h; sourceTree = "<group>"; };
-		4591A72A2A9758F500D19876 /* AM3SController_V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3SController_V2.h; sourceTree = "<group>"; };
-		4591A72B2A9758F500D19876 /* NT13BController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BController.h; sourceTree = "<group>"; };
-		4591A72C2A9758F500D19876 /* ECG3USB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3USB.h; sourceTree = "<group>"; };
-		4591A72D2A9758F500D19876 /* BP7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7.h; sourceTree = "<group>"; };
-		4591A72E2A9758F500D19876 /* BGController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGController.h; sourceTree = "<group>"; };
-		4591A72F2A9758F500D19876 /* PT3SBTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBTController.h; sourceTree = "<group>"; };
-		4591A7302A9758F500D19876 /* iHealthHS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iHealthHS6.h; sourceTree = "<group>"; };
-		4591A7312A9758F500D19876 /* AM4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM4.h; sourceTree = "<group>"; };
-		4591A7322A9758F500D19876 /* BP5SRW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRW.h; sourceTree = "<group>"; };
-		4591A7332A9758F500D19876 /* IDOWatchDialInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWatchDialInfoModel.h; sourceTree = "<group>"; };
-		4591A7342A9758F500D19876 /* DFUServerFirmwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUServerFirmwareInfo.h; sourceTree = "<group>"; };
-		4591A7352A9758F500D19876 /* ABI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABI.h; sourceTree = "<group>"; };
-		4591A7362A9758F500D19876 /* IDOBluetoothEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothEngine.h; sourceTree = "<group>"; };
-		4591A7372A9758F500D19876 /* IDOSyncSportDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSportDataModel.h; sourceTree = "<group>"; };
-		4591A7382A9758F500D19876 /* HS4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS4.h; sourceTree = "<group>"; };
-		4591A7392A9758F500D19876 /* BPBV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBV10Device.h; sourceTree = "<group>"; };
-		4591A73A2A9758F500D19876 /* IDOBluetoothBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothBaseModel.h; sourceTree = "<group>"; };
-		4591A73B2A9758F500D19876 /* IDOFoundationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOFoundationCommand.h; sourceTree = "<group>"; };
-		4591A73C2A9758F500D19876 /* TS28BController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28BController.h; sourceTree = "<group>"; };
-		4591A73D2A9758F500D19876 /* IDOWatchDialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWatchDialManager.h; sourceTree = "<group>"; };
-		4591A73E2A9758F500D19876 /* IDOSyncSleepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSleepDataModel.h; sourceTree = "<group>"; };
-		4591A73F2A9758F500D19876 /* HealthUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthUser.h; sourceTree = "<group>"; };
-		4591A7402A9758F500D19876 /* IDOSetInfoBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSetInfoBluetoothModel.h; sourceTree = "<group>"; };
-		4591A7412A9758F500D19876 /* IDOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncManager.h; sourceTree = "<group>"; };
-		4591A7422A9758F500D19876 /* BG1AController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1AController.h; sourceTree = "<group>"; };
-		4591A7432A9758F500D19876 /* BG1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1Controller.h; sourceTree = "<group>"; };
-		4591A7442A9758F500D19876 /* IDOBindEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBindEnum.h; sourceTree = "<group>"; };
-		4591A7452A9758F500D19876 /* HFSmartLinkDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmartLinkDeviceInfo.h; sourceTree = "<group>"; };
-		4591A7462A9758F500D19876 /* BP5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5Controller.h; sourceTree = "<group>"; };
-		4591A7472A9758F500D19876 /* THV3Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3Macro.h; sourceTree = "<group>"; };
-		4591A7482A9758F500D19876 /* HS2S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2S.h; sourceTree = "<group>"; };
-		4591A7492A9758F500D19876 /* IDOBluetoothServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothServices.h; sourceTree = "<group>"; };
-		4591A74A2A9758F500D19876 /* PO1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO1.h; sourceTree = "<group>"; };
-		4591A74B2A9758F500D19876 /* HS4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS4Controller.h; sourceTree = "<group>"; };
-		4591A74C2A9758F500D19876 /* IDOBlueEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBlueEnum.h; sourceTree = "<group>"; };
-		4591A74D2A9758F500D19876 /* BP5C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5C.h; sourceTree = "<group>"; };
-		4591A74E2A9758F500D19876 /* TS28BHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28BHeader.h; sourceTree = "<group>"; };
-		4591A74F2A9758F500D19876 /* BP3L.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3L.h; sourceTree = "<group>"; };
-		4591A7502A9758F500D19876 /* IHSDKCloudUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHSDKCloudUser.h; sourceTree = "<group>"; };
-		4591A7512A9758F500D19876 /* DFUDeviceFirmwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUDeviceFirmwareInfo.h; sourceTree = "<group>"; };
-		4591A7522A9758F500D19876 /* ECG3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3Controller.h; sourceTree = "<group>"; };
-		4591A7532A9758F500D19876 /* IDOSyncActivityDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncActivityDataModel.h; sourceTree = "<group>"; };
-		4591A7542A9758F500D19876 /* KN550BT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KN550BT.h; sourceTree = "<group>"; };
-		4591A7552A9758F500D19876 /* AM6Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6Constants.h; sourceTree = "<group>"; };
-		4591A7562A9758F500D19876 /* SDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKInfo.h; sourceTree = "<group>"; };
-		4591A7572A9758F500D19876 /* BPLoopMeasureSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPLoopMeasureSettingModel.h; sourceTree = "<group>"; };
-		4591A7582A9758F500D19876 /* iHealthSDK2.10.0_beta13.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = iHealthSDK2.10.0_beta13.a; sourceTree = "<group>"; };
 		45A72D16256E5FCB00825201 /* BP7Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BP7Module.m; sourceTree = "<group>"; };
 		45A72D17256E5FCB00825201 /* BP7Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7Module.h; sourceTree = "<group>"; };
+		45A8704E2AAF11CA00C2A284 /* IDOSyncBpDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncBpDataModel.h; sourceTree = "<group>"; };
+		45A8704F2AAF11CA00C2A284 /* BPContinua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinua.h; sourceTree = "<group>"; };
+		45A870502AAF11CA00C2A284 /* IDOWeightBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWeightBluetoothModel.h; sourceTree = "<group>"; };
+		45A870512AAF11CA00C2A284 /* IHDeviceSDKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHDeviceSDKLog.h; sourceTree = "<group>"; };
+		45A870522AAF11CA00C2A284 /* ScanDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanDeviceController.h; sourceTree = "<group>"; };
+		45A870532AAF11CA00C2A284 /* AM5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5.h; sourceTree = "<group>"; };
+		45A870542AAF11CA00C2A284 /* ECGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGHeader.h; sourceTree = "<group>"; };
+		45A870552AAF11CA00C2A284 /* HS5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS5.h; sourceTree = "<group>"; };
+		45A870562AAF11CA00C2A284 /* DFUHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUHeader.h; sourceTree = "<group>"; };
+		45A870572AAF11CA00C2A284 /* AM5Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5Header.h; sourceTree = "<group>"; };
+		45A870582AAF11CA00C2A284 /* HS2SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SController.h; sourceTree = "<group>"; };
+		45A870592AAF11CA00C2A284 /* IDODataExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDODataExchangeModel.h; sourceTree = "<group>"; };
+		45A8705A2AAF11CA00C2A284 /* BP5CController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5CController.h; sourceTree = "<group>"; };
+		45A8705B2AAF11CA00C2A284 /* BPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPController.h; sourceTree = "<group>"; };
+		45A8705C2AAF11CA00C2A284 /* HS3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS3Controller.h; sourceTree = "<group>"; };
+		45A8705D2AAF11CA00C2A284 /* IDOGetInfoBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOGetInfoBluetoothModel.h; sourceTree = "<group>"; };
+		45A8705E2AAF11CA00C2A284 /* BPBTLEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBTLEDevice.h; sourceTree = "<group>"; };
+		45A8705F2AAF11CA00C2A284 /* NT13B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13B.h; sourceTree = "<group>"; };
+		45A870602AAF11CA00C2A284 /* BP7Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7Controller.h; sourceTree = "<group>"; };
+		45A870612AAF11CA00C2A284 /* BPAV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPAV10Device.h; sourceTree = "<group>"; };
+		45A870622AAF11CA00C2A284 /* BGMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGMacroFile.h; sourceTree = "<group>"; };
+		45A870632AAF11CA00C2A284 /* AM5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5Controller.h; sourceTree = "<group>"; };
+		45A870642AAF11CA00C2A284 /* HS2SPROController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SPROController.h; sourceTree = "<group>"; };
+		45A870652AAF11CA00C2A284 /* PT3SBT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBT.h; sourceTree = "<group>"; };
+		45A870662AAF11CA00C2A284 /* HSMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSMacroFile.h; sourceTree = "<group>"; };
+		45A870672AAF11CA00C2A284 /* IDOCalculateBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOCalculateBluetoothModel.h; sourceTree = "<group>"; };
+		45A870682AAF11CA00C2A284 /* AMMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMMacroFile.h; sourceTree = "<group>"; };
+		45A870692AAF11CA00C2A284 /* IDOTransferFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOTransferFileManager.h; sourceTree = "<group>"; };
+		45A8706A2AAF11CA00C2A284 /* SDKFlowUpdateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKFlowUpdateDevice.h; sourceTree = "<group>"; };
+		45A8706B2AAF11CA00C2A284 /* BPDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPDevice.h; sourceTree = "<group>"; };
+		45A8706C2AAF11CA00C2A284 /* POHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POHeader.h; sourceTree = "<group>"; };
+		45A8706D2AAF11CA00C2A284 /* SDKUpdateDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKUpdateDevice.h; sourceTree = "<group>"; };
+		45A8706E2AAF11CA00C2A284 /* BP5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5.h; sourceTree = "<group>"; };
+		45A8706F2AAF11CA00C2A284 /* BPHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPHeader.h; sourceTree = "<group>"; };
+		45A870702AAF11CA00C2A284 /* ABIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABIController.h; sourceTree = "<group>"; };
+		45A870712AAF11CA00C2A284 /* TS28B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28B.h; sourceTree = "<group>"; };
+		45A870722AAF11CA00C2A284 /* HFSmartLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmartLink.h; sourceTree = "<group>"; };
+		45A870732AAF11CA00C2A284 /* BP5SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SController.h; sourceTree = "<group>"; };
+		45A870742AAF11CA00C2A284 /* ConnectDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectDeviceController.h; sourceTree = "<group>"; };
+		45A870752AAF11CA00C2A284 /* BG5S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5S.h; sourceTree = "<group>"; };
+		45A870762AAF11CA00C2A284 /* BP5S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5S.h; sourceTree = "<group>"; };
+		45A870772AAF11CA00C2A284 /* THV3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3.h; sourceTree = "<group>"; };
+		45A870782AAF11CA00C2A284 /* AM6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6.h; sourceTree = "<group>"; };
+		45A870792AAF11CA00C2A284 /* BG1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1.h; sourceTree = "<group>"; };
+		45A8707A2AAF11CA00C2A284 /* BG1SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1SController.h; sourceTree = "<group>"; };
+		45A8707B2AAF11CA00C2A284 /* HS5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS5Controller.h; sourceTree = "<group>"; };
+		45A8707C2AAF11CA00C2A284 /* HS2SPRO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2SPRO.h; sourceTree = "<group>"; };
+		45A8707D2AAF11CA00C2A284 /* BG5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5.h; sourceTree = "<group>"; };
+		45A8707E2AAF11CA00C2A284 /* ManageDeviceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageDeviceController.h; sourceTree = "<group>"; };
+		45A8707F2AAF11CA00C2A284 /* BGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGDevice.h; sourceTree = "<group>"; };
+		45A870802AAF11CA00C2A284 /* IDOErrorCodeToStr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOErrorCodeToStr.h; sourceTree = "<group>"; };
+		45A870812AAF11CA00C2A284 /* THV3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3Controller.h; sourceTree = "<group>"; };
+		45A870822AAF11CA00C2A284 /* BP5SRWController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRWController.h; sourceTree = "<group>"; };
+		45A870832AAF11CA00C2A284 /* AM6Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6Controller.h; sourceTree = "<group>"; };
+		45A870842AAF11CA00C2A284 /* BG1S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1S.h; sourceTree = "<group>"; };
+		45A870852AAF11CA00C2A284 /* HS2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2.h; sourceTree = "<group>"; };
+		45A870862AAF11CA00C2A284 /* PO1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO1Controller.h; sourceTree = "<group>"; };
+		45A870872AAF11CA00C2A284 /* BGHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHeader.h; sourceTree = "<group>"; };
+		45A870882AAF11CA00C2A284 /* DFUController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUController.h; sourceTree = "<group>"; };
+		45A870892AAF11CA00C2A284 /* PO3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO3.h; sourceTree = "<group>"; };
+		45A8708A2AAF11CA00C2A284 /* BP3LController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3LController.h; sourceTree = "<group>"; };
+		45A8708B2AAF11CA00C2A284 /* IDOSyncHeartRateDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncHeartRateDataModel.h; sourceTree = "<group>"; };
+		45A8708C2AAF11CA00C2A284 /* NT13BHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BHeader.h; sourceTree = "<group>"; };
+		45A8708D2AAF11CA00C2A284 /* BG5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5Controller.h; sourceTree = "<group>"; };
+		45A8708E2AAF11CA00C2A284 /* AM3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3Controller.h; sourceTree = "<group>"; };
+		45A8708F2AAF11CA00C2A284 /* BPM1AE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPM1AE.h; sourceTree = "<group>"; };
+		45A870902AAF11CA00C2A284 /* BG1A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1A.h; sourceTree = "<group>"; };
+		45A870912AAF11CA00C2A284 /* ABPM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPM.h; sourceTree = "<group>"; };
+		45A870922AAF11CA00C2A284 /* IDOLogEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOLogEnum.h; sourceTree = "<group>"; };
+		45A870932AAF11CA00C2A284 /* IDOSyncGpsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncGpsDataModel.h; sourceTree = "<group>"; };
+		45A870942AAF11CA00C2A284 /* HealthHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthHeader.h; sourceTree = "<group>"; };
+		45A870952AAF11CA00C2A284 /* IDOSyncPressureDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncPressureDataModel.h; sourceTree = "<group>"; };
+		45A870962AAF11CA00C2A284 /* IDOSyncSwimDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSwimDataModel.h; sourceTree = "<group>"; };
+		45A870972AAF11CA00C2A284 /* HSHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSHeader.h; sourceTree = "<group>"; };
+		45A870982AAF11CA00C2A284 /* DFUMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUMacro.h; sourceTree = "<group>"; };
+		45A870992AAF11CA00C2A284 /* IDOTranEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOTranEnum.h; sourceTree = "<group>"; };
+		45A8709A2AAF11CA00C2A284 /* BG5SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG5SController.h; sourceTree = "<group>"; };
+		45A8709B2AAF11CA00C2A284 /* AM3S_V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3S_V2.h; sourceTree = "<group>"; };
+		45A8709C2AAF11CA00C2A284 /* IDOCommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOCommonMacro.h; sourceTree = "<group>"; };
+		45A8709D2AAF11CA00C2A284 /* IDORecordDeviceLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDORecordDeviceLog.h; sourceTree = "<group>"; };
+		45A8709E2AAF11CA00C2A284 /* ABPMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPMController.h; sourceTree = "<group>"; };
+		45A8709F2AAF11CA00C2A284 /* NT13BMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BMacroFile.h; sourceTree = "<group>"; };
+		45A870A02AAF11CA00C2A284 /* POMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POMacroFile.h; sourceTree = "<group>"; };
+		45A870A12AAF11CA00C2A284 /* IDOSyncEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncEnum.h; sourceTree = "<group>"; };
+		45A870A22AAF11CA00C2A284 /* POErrorTimeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POErrorTimeClass.h; sourceTree = "<group>"; };
+		45A870A32AAF11CA00C2A284 /* AM3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3.h; sourceTree = "<group>"; };
+		45A870A42AAF11CA00C2A284 /* IDOSyncSpo2DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSpo2DataModel.h; sourceTree = "<group>"; };
+		45A870A52AAF11CA00C2A284 /* KN550BTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KN550BTController.h; sourceTree = "<group>"; };
+		45A870A62AAF11CA00C2A284 /* IDODataMigrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDODataMigrationManager.h; sourceTree = "<group>"; };
+		45A870A72AAF11CA00C2A284 /* BP7S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7S.h; sourceTree = "<group>"; };
+		45A870A82AAF11CA00C2A284 /* PO3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO3Controller.h; sourceTree = "<group>"; };
+		45A870A92AAF11CA00C2A284 /* HS3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS3.h; sourceTree = "<group>"; };
+		45A870AA2AAF11CA00C2A284 /* AM4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM4Controller.h; sourceTree = "<group>"; };
+		45A870AB2AAF11CA00C2A284 /* BPV25Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPV25Device.h; sourceTree = "<group>"; };
+		45A870AC2AAF11CA00C2A284 /* PT3SBTMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBTMacroFile.h; sourceTree = "<group>"; };
+		45A870AD2AAF11CA00C2A284 /* HS2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2Controller.h; sourceTree = "<group>"; };
+		45A870AE2AAF11CB00C2A284 /* BP7SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7SController.h; sourceTree = "<group>"; };
+		45A870AF2AAF11CB00C2A284 /* BPContinuaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPContinuaController.h; sourceTree = "<group>"; };
+		45A870B02AAF11CB00C2A284 /* BP3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3.h; sourceTree = "<group>"; };
+		45A870B12AAF11CB00C2A284 /* IDOPeripheralModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOPeripheralModel.h; sourceTree = "<group>"; };
+		45A870B22AAF11CB00C2A284 /* AMHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMHeader.h; sourceTree = "<group>"; };
+		45A870B32AAF11CB00C2A284 /* BP3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3Controller.h; sourceTree = "<group>"; };
+		45A870B42AAF11CB00C2A284 /* ECGMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECGMacroFile.h; sourceTree = "<group>"; };
+		45A870B52AAF11CB00C2A284 /* BPV24Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPV24Device.h; sourceTree = "<group>"; };
+		45A870B62AAF11CB00C2A284 /* ECG3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3.h; sourceTree = "<group>"; };
+		45A870B72AAF11CB00C2A284 /* IDOBluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothManager.h; sourceTree = "<group>"; };
+		45A870B82AAF11CB00C2A284 /* BPMacroFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPMacroFile.h; sourceTree = "<group>"; };
+		45A870B92AAF11CB00C2A284 /* IDOBlueDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBlueDataResponse.h; sourceTree = "<group>"; };
+		45A870BA2AAF11CB00C2A284 /* ECG3USBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3USBController.h; sourceTree = "<group>"; };
+		45A870BB2AAF11CB00C2A284 /* AM3SController_V2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM3SController_V2.h; sourceTree = "<group>"; };
+		45A870BC2AAF11CB00C2A284 /* NT13BController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NT13BController.h; sourceTree = "<group>"; };
+		45A870BD2AAF11CB00C2A284 /* ECG3USB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3USB.h; sourceTree = "<group>"; };
+		45A870BE2AAF11CB00C2A284 /* BP7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP7.h; sourceTree = "<group>"; };
+		45A870BF2AAF11CB00C2A284 /* BGController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGController.h; sourceTree = "<group>"; };
+		45A870C02AAF11CB00C2A284 /* PT3SBTController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PT3SBTController.h; sourceTree = "<group>"; };
+		45A870C12AAF11CB00C2A284 /* iHealthHS6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iHealthHS6.h; sourceTree = "<group>"; };
+		45A870C22AAF11CB00C2A284 /* AM4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM4.h; sourceTree = "<group>"; };
+		45A870C32AAF11CB00C2A284 /* BP5SRW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5SRW.h; sourceTree = "<group>"; };
+		45A870C42AAF11CB00C2A284 /* IDOWatchDialInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWatchDialInfoModel.h; sourceTree = "<group>"; };
+		45A870C52AAF11CB00C2A284 /* DFUServerFirmwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUServerFirmwareInfo.h; sourceTree = "<group>"; };
+		45A870C62AAF11CB00C2A284 /* ABI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABI.h; sourceTree = "<group>"; };
+		45A870C72AAF11CB00C2A284 /* IDOBluetoothEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothEngine.h; sourceTree = "<group>"; };
+		45A870C82AAF11CB00C2A284 /* IDOSyncSportDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSportDataModel.h; sourceTree = "<group>"; };
+		45A870C92AAF11CB00C2A284 /* HS4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS4.h; sourceTree = "<group>"; };
+		45A870CA2AAF11CB00C2A284 /* BPBV10Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPBV10Device.h; sourceTree = "<group>"; };
+		45A870CB2AAF11CB00C2A284 /* IDOBluetoothBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothBaseModel.h; sourceTree = "<group>"; };
+		45A870CC2AAF11CB00C2A284 /* IDOFoundationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOFoundationCommand.h; sourceTree = "<group>"; };
+		45A870CD2AAF11CB00C2A284 /* TS28BController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28BController.h; sourceTree = "<group>"; };
+		45A870CE2AAF11CB00C2A284 /* IDOWatchDialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOWatchDialManager.h; sourceTree = "<group>"; };
+		45A870CF2AAF11CB00C2A284 /* IDOSyncSleepDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncSleepDataModel.h; sourceTree = "<group>"; };
+		45A870D02AAF11CB00C2A284 /* HealthUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthUser.h; sourceTree = "<group>"; };
+		45A870D12AAF11CB00C2A284 /* IDOSetInfoBluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSetInfoBluetoothModel.h; sourceTree = "<group>"; };
+		45A870D22AAF11CB00C2A284 /* IDOSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncManager.h; sourceTree = "<group>"; };
+		45A870D32AAF11CB00C2A284 /* BG1AController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1AController.h; sourceTree = "<group>"; };
+		45A870D42AAF11CB00C2A284 /* BG1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BG1Controller.h; sourceTree = "<group>"; };
+		45A870D52AAF11CB00C2A284 /* IDOBindEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBindEnum.h; sourceTree = "<group>"; };
+		45A870D62AAF11CB00C2A284 /* HFSmartLinkDeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSmartLinkDeviceInfo.h; sourceTree = "<group>"; };
+		45A870D72AAF11CB00C2A284 /* BP5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5Controller.h; sourceTree = "<group>"; };
+		45A870D82AAF11CB00C2A284 /* THV3Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THV3Macro.h; sourceTree = "<group>"; };
+		45A870D92AAF11CB00C2A284 /* HS2S.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS2S.h; sourceTree = "<group>"; };
+		45A870DA2AAF11CB00C2A284 /* IDOBluetoothServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBluetoothServices.h; sourceTree = "<group>"; };
+		45A870DB2AAF11CB00C2A284 /* PO1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO1.h; sourceTree = "<group>"; };
+		45A870DC2AAF11CB00C2A284 /* HS4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HS4Controller.h; sourceTree = "<group>"; };
+		45A870DD2AAF11CB00C2A284 /* IDOBlueEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOBlueEnum.h; sourceTree = "<group>"; };
+		45A870DE2AAF11CB00C2A284 /* BP5C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP5C.h; sourceTree = "<group>"; };
+		45A870DF2AAF11CB00C2A284 /* TS28BHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TS28BHeader.h; sourceTree = "<group>"; };
+		45A870E02AAF11CB00C2A284 /* BP3L.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BP3L.h; sourceTree = "<group>"; };
+		45A870E12AAF11CB00C2A284 /* IHSDKCloudUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IHSDKCloudUser.h; sourceTree = "<group>"; };
+		45A870E22AAF11CB00C2A284 /* DFUDeviceFirmwareInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFUDeviceFirmwareInfo.h; sourceTree = "<group>"; };
+		45A870E32AAF11CB00C2A284 /* ECG3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECG3Controller.h; sourceTree = "<group>"; };
+		45A870E42AAF11CB00C2A284 /* IDOSyncActivityDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDOSyncActivityDataModel.h; sourceTree = "<group>"; };
+		45A870E52AAF11CB00C2A284 /* KN550BT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KN550BT.h; sourceTree = "<group>"; };
+		45A870E62AAF11CB00C2A284 /* AM6Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM6Constants.h; sourceTree = "<group>"; };
+		45A870E72AAF11CB00C2A284 /* SDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDKInfo.h; sourceTree = "<group>"; };
+		45A870E82AAF11CB00C2A284 /* BPLoopMeasureSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPLoopMeasureSettingModel.h; sourceTree = "<group>"; };
+		45A870E92AAF11CC00C2A284 /* iHealthSDK2.10.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = iHealthSDK2.10.0.a; sourceTree = "<group>"; };
 		8CCCE9AE1E5ADF49007F7FE4 /* PO3Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PO3Module.h; sourceTree = "<group>"; };
 		8CCCE9AF1E5ADF49007F7FE4 /* PO3Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PO3Module.m; sourceTree = "<group>"; };
 		8CCCE9B01E5ADF49007F7FE4 /* POProfileModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POProfileModule.h; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4591A7592A9758F600D19876 /* iHealthSDK2.10.0_beta13.a in Frameworks */,
+				45A870EA2AAF11CC00C2A284 /* iHealthSDK2.10.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,170 +438,170 @@
 		187510351DE5E6A5005E66B1 /* Communication_SDK */ = {
 			isa = PBXGroup;
 			children = (
-				4591A6BC2A9758F500D19876 /* Headers */,
-				4591A7582A9758F500D19876 /* iHealthSDK2.10.0_beta13.a */,
+				45A8704D2AAF11CA00C2A284 /* Headers */,
+				45A870E92AAF11CC00C2A284 /* iHealthSDK2.10.0.a */,
 			);
 			path = Communication_SDK;
 			sourceTree = "<group>";
 		};
-		4591A6BC2A9758F500D19876 /* Headers */ = {
+		45A8704D2AAF11CA00C2A284 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				4591A6BD2A9758F500D19876 /* IDOSyncBpDataModel.h */,
-				4591A6BE2A9758F500D19876 /* BPContinua.h */,
-				4591A6BF2A9758F500D19876 /* IDOWeightBluetoothModel.h */,
-				4591A6C02A9758F500D19876 /* IHDeviceSDKLog.h */,
-				4591A6C12A9758F500D19876 /* ScanDeviceController.h */,
-				4591A6C22A9758F500D19876 /* AM5.h */,
-				4591A6C32A9758F500D19876 /* ECGHeader.h */,
-				4591A6C42A9758F500D19876 /* HS5.h */,
-				4591A6C52A9758F500D19876 /* DFUHeader.h */,
-				4591A6C62A9758F500D19876 /* AM5Header.h */,
-				4591A6C72A9758F500D19876 /* HS2SController.h */,
-				4591A6C82A9758F500D19876 /* IDODataExchangeModel.h */,
-				4591A6C92A9758F500D19876 /* BP5CController.h */,
-				4591A6CA2A9758F500D19876 /* BPController.h */,
-				4591A6CB2A9758F500D19876 /* HS3Controller.h */,
-				4591A6CC2A9758F500D19876 /* IDOGetInfoBluetoothModel.h */,
-				4591A6CD2A9758F500D19876 /* BPBTLEDevice.h */,
-				4591A6CE2A9758F500D19876 /* NT13B.h */,
-				4591A6CF2A9758F500D19876 /* BP7Controller.h */,
-				4591A6D02A9758F500D19876 /* BPAV10Device.h */,
-				4591A6D12A9758F500D19876 /* BGMacroFile.h */,
-				4591A6D22A9758F500D19876 /* AM5Controller.h */,
-				4591A6D32A9758F500D19876 /* HS2SPROController.h */,
-				4591A6D42A9758F500D19876 /* PT3SBT.h */,
-				4591A6D52A9758F500D19876 /* HSMacroFile.h */,
-				4591A6D62A9758F500D19876 /* IDOCalculateBluetoothModel.h */,
-				4591A6D72A9758F500D19876 /* AMMacroFile.h */,
-				4591A6D82A9758F500D19876 /* IDOTransferFileManager.h */,
-				4591A6D92A9758F500D19876 /* SDKFlowUpdateDevice.h */,
-				4591A6DA2A9758F500D19876 /* BPDevice.h */,
-				4591A6DB2A9758F500D19876 /* POHeader.h */,
-				4591A6DC2A9758F500D19876 /* SDKUpdateDevice.h */,
-				4591A6DD2A9758F500D19876 /* BP5.h */,
-				4591A6DE2A9758F500D19876 /* BPHeader.h */,
-				4591A6DF2A9758F500D19876 /* ABIController.h */,
-				4591A6E02A9758F500D19876 /* TS28B.h */,
-				4591A6E12A9758F500D19876 /* HFSmartLink.h */,
-				4591A6E22A9758F500D19876 /* BP5SController.h */,
-				4591A6E32A9758F500D19876 /* ConnectDeviceController.h */,
-				4591A6E42A9758F500D19876 /* BG5S.h */,
-				4591A6E52A9758F500D19876 /* BP5S.h */,
-				4591A6E62A9758F500D19876 /* THV3.h */,
-				4591A6E72A9758F500D19876 /* AM6.h */,
-				4591A6E82A9758F500D19876 /* BG1.h */,
-				4591A6E92A9758F500D19876 /* BG1SController.h */,
-				4591A6EA2A9758F500D19876 /* HS5Controller.h */,
-				4591A6EB2A9758F500D19876 /* HS2SPRO.h */,
-				4591A6EC2A9758F500D19876 /* BG5.h */,
-				4591A6ED2A9758F500D19876 /* ManageDeviceController.h */,
-				4591A6EE2A9758F500D19876 /* BGDevice.h */,
-				4591A6EF2A9758F500D19876 /* IDOErrorCodeToStr.h */,
-				4591A6F02A9758F500D19876 /* THV3Controller.h */,
-				4591A6F12A9758F500D19876 /* BP5SRWController.h */,
-				4591A6F22A9758F500D19876 /* AM6Controller.h */,
-				4591A6F32A9758F500D19876 /* BG1S.h */,
-				4591A6F42A9758F500D19876 /* HS2.h */,
-				4591A6F52A9758F500D19876 /* PO1Controller.h */,
-				4591A6F62A9758F500D19876 /* BGHeader.h */,
-				4591A6F72A9758F500D19876 /* DFUController.h */,
-				4591A6F82A9758F500D19876 /* PO3.h */,
-				4591A6F92A9758F500D19876 /* BP3LController.h */,
-				4591A6FA2A9758F500D19876 /* IDOSyncHeartRateDataModel.h */,
-				4591A6FB2A9758F500D19876 /* NT13BHeader.h */,
-				4591A6FC2A9758F500D19876 /* BG5Controller.h */,
-				4591A6FD2A9758F500D19876 /* AM3Controller.h */,
-				4591A6FE2A9758F500D19876 /* BPM1AE.h */,
-				4591A6FF2A9758F500D19876 /* BG1A.h */,
-				4591A7002A9758F500D19876 /* ABPM.h */,
-				4591A7012A9758F500D19876 /* IDOLogEnum.h */,
-				4591A7022A9758F500D19876 /* IDOSyncGpsDataModel.h */,
-				4591A7032A9758F500D19876 /* HealthHeader.h */,
-				4591A7042A9758F500D19876 /* IDOSyncPressureDataModel.h */,
-				4591A7052A9758F500D19876 /* IDOSyncSwimDataModel.h */,
-				4591A7062A9758F500D19876 /* HSHeader.h */,
-				4591A7072A9758F500D19876 /* DFUMacro.h */,
-				4591A7082A9758F500D19876 /* IDOTranEnum.h */,
-				4591A7092A9758F500D19876 /* BG5SController.h */,
-				4591A70A2A9758F500D19876 /* AM3S_V2.h */,
-				4591A70B2A9758F500D19876 /* IDOCommonMacro.h */,
-				4591A70C2A9758F500D19876 /* IDORecordDeviceLog.h */,
-				4591A70D2A9758F500D19876 /* ABPMController.h */,
-				4591A70E2A9758F500D19876 /* NT13BMacroFile.h */,
-				4591A70F2A9758F500D19876 /* POMacroFile.h */,
-				4591A7102A9758F500D19876 /* IDOSyncEnum.h */,
-				4591A7112A9758F500D19876 /* POErrorTimeClass.h */,
-				4591A7122A9758F500D19876 /* AM3.h */,
-				4591A7132A9758F500D19876 /* IDOSyncSpo2DataModel.h */,
-				4591A7142A9758F500D19876 /* KN550BTController.h */,
-				4591A7152A9758F500D19876 /* IDODataMigrationManager.h */,
-				4591A7162A9758F500D19876 /* BP7S.h */,
-				4591A7172A9758F500D19876 /* PO3Controller.h */,
-				4591A7182A9758F500D19876 /* HS3.h */,
-				4591A7192A9758F500D19876 /* AM4Controller.h */,
-				4591A71A2A9758F500D19876 /* BPV25Device.h */,
-				4591A71B2A9758F500D19876 /* PT3SBTMacroFile.h */,
-				4591A71C2A9758F500D19876 /* HS2Controller.h */,
-				4591A71D2A9758F500D19876 /* BP7SController.h */,
-				4591A71E2A9758F500D19876 /* BPContinuaController.h */,
-				4591A71F2A9758F500D19876 /* BP3.h */,
-				4591A7202A9758F500D19876 /* IDOPeripheralModel.h */,
-				4591A7212A9758F500D19876 /* AMHeader.h */,
-				4591A7222A9758F500D19876 /* BP3Controller.h */,
-				4591A7232A9758F500D19876 /* ECGMacroFile.h */,
-				4591A7242A9758F500D19876 /* BPV24Device.h */,
-				4591A7252A9758F500D19876 /* ECG3.h */,
-				4591A7262A9758F500D19876 /* IDOBluetoothManager.h */,
-				4591A7272A9758F500D19876 /* BPMacroFile.h */,
-				4591A7282A9758F500D19876 /* IDOBlueDataResponse.h */,
-				4591A7292A9758F500D19876 /* ECG3USBController.h */,
-				4591A72A2A9758F500D19876 /* AM3SController_V2.h */,
-				4591A72B2A9758F500D19876 /* NT13BController.h */,
-				4591A72C2A9758F500D19876 /* ECG3USB.h */,
-				4591A72D2A9758F500D19876 /* BP7.h */,
-				4591A72E2A9758F500D19876 /* BGController.h */,
-				4591A72F2A9758F500D19876 /* PT3SBTController.h */,
-				4591A7302A9758F500D19876 /* iHealthHS6.h */,
-				4591A7312A9758F500D19876 /* AM4.h */,
-				4591A7322A9758F500D19876 /* BP5SRW.h */,
-				4591A7332A9758F500D19876 /* IDOWatchDialInfoModel.h */,
-				4591A7342A9758F500D19876 /* DFUServerFirmwareInfo.h */,
-				4591A7352A9758F500D19876 /* ABI.h */,
-				4591A7362A9758F500D19876 /* IDOBluetoothEngine.h */,
-				4591A7372A9758F500D19876 /* IDOSyncSportDataModel.h */,
-				4591A7382A9758F500D19876 /* HS4.h */,
-				4591A7392A9758F500D19876 /* BPBV10Device.h */,
-				4591A73A2A9758F500D19876 /* IDOBluetoothBaseModel.h */,
-				4591A73B2A9758F500D19876 /* IDOFoundationCommand.h */,
-				4591A73C2A9758F500D19876 /* TS28BController.h */,
-				4591A73D2A9758F500D19876 /* IDOWatchDialManager.h */,
-				4591A73E2A9758F500D19876 /* IDOSyncSleepDataModel.h */,
-				4591A73F2A9758F500D19876 /* HealthUser.h */,
-				4591A7402A9758F500D19876 /* IDOSetInfoBluetoothModel.h */,
-				4591A7412A9758F500D19876 /* IDOSyncManager.h */,
-				4591A7422A9758F500D19876 /* BG1AController.h */,
-				4591A7432A9758F500D19876 /* BG1Controller.h */,
-				4591A7442A9758F500D19876 /* IDOBindEnum.h */,
-				4591A7452A9758F500D19876 /* HFSmartLinkDeviceInfo.h */,
-				4591A7462A9758F500D19876 /* BP5Controller.h */,
-				4591A7472A9758F500D19876 /* THV3Macro.h */,
-				4591A7482A9758F500D19876 /* HS2S.h */,
-				4591A7492A9758F500D19876 /* IDOBluetoothServices.h */,
-				4591A74A2A9758F500D19876 /* PO1.h */,
-				4591A74B2A9758F500D19876 /* HS4Controller.h */,
-				4591A74C2A9758F500D19876 /* IDOBlueEnum.h */,
-				4591A74D2A9758F500D19876 /* BP5C.h */,
-				4591A74E2A9758F500D19876 /* TS28BHeader.h */,
-				4591A74F2A9758F500D19876 /* BP3L.h */,
-				4591A7502A9758F500D19876 /* IHSDKCloudUser.h */,
-				4591A7512A9758F500D19876 /* DFUDeviceFirmwareInfo.h */,
-				4591A7522A9758F500D19876 /* ECG3Controller.h */,
-				4591A7532A9758F500D19876 /* IDOSyncActivityDataModel.h */,
-				4591A7542A9758F500D19876 /* KN550BT.h */,
-				4591A7552A9758F500D19876 /* AM6Constants.h */,
-				4591A7562A9758F500D19876 /* SDKInfo.h */,
-				4591A7572A9758F500D19876 /* BPLoopMeasureSettingModel.h */,
+				45A8704E2AAF11CA00C2A284 /* IDOSyncBpDataModel.h */,
+				45A8704F2AAF11CA00C2A284 /* BPContinua.h */,
+				45A870502AAF11CA00C2A284 /* IDOWeightBluetoothModel.h */,
+				45A870512AAF11CA00C2A284 /* IHDeviceSDKLog.h */,
+				45A870522AAF11CA00C2A284 /* ScanDeviceController.h */,
+				45A870532AAF11CA00C2A284 /* AM5.h */,
+				45A870542AAF11CA00C2A284 /* ECGHeader.h */,
+				45A870552AAF11CA00C2A284 /* HS5.h */,
+				45A870562AAF11CA00C2A284 /* DFUHeader.h */,
+				45A870572AAF11CA00C2A284 /* AM5Header.h */,
+				45A870582AAF11CA00C2A284 /* HS2SController.h */,
+				45A870592AAF11CA00C2A284 /* IDODataExchangeModel.h */,
+				45A8705A2AAF11CA00C2A284 /* BP5CController.h */,
+				45A8705B2AAF11CA00C2A284 /* BPController.h */,
+				45A8705C2AAF11CA00C2A284 /* HS3Controller.h */,
+				45A8705D2AAF11CA00C2A284 /* IDOGetInfoBluetoothModel.h */,
+				45A8705E2AAF11CA00C2A284 /* BPBTLEDevice.h */,
+				45A8705F2AAF11CA00C2A284 /* NT13B.h */,
+				45A870602AAF11CA00C2A284 /* BP7Controller.h */,
+				45A870612AAF11CA00C2A284 /* BPAV10Device.h */,
+				45A870622AAF11CA00C2A284 /* BGMacroFile.h */,
+				45A870632AAF11CA00C2A284 /* AM5Controller.h */,
+				45A870642AAF11CA00C2A284 /* HS2SPROController.h */,
+				45A870652AAF11CA00C2A284 /* PT3SBT.h */,
+				45A870662AAF11CA00C2A284 /* HSMacroFile.h */,
+				45A870672AAF11CA00C2A284 /* IDOCalculateBluetoothModel.h */,
+				45A870682AAF11CA00C2A284 /* AMMacroFile.h */,
+				45A870692AAF11CA00C2A284 /* IDOTransferFileManager.h */,
+				45A8706A2AAF11CA00C2A284 /* SDKFlowUpdateDevice.h */,
+				45A8706B2AAF11CA00C2A284 /* BPDevice.h */,
+				45A8706C2AAF11CA00C2A284 /* POHeader.h */,
+				45A8706D2AAF11CA00C2A284 /* SDKUpdateDevice.h */,
+				45A8706E2AAF11CA00C2A284 /* BP5.h */,
+				45A8706F2AAF11CA00C2A284 /* BPHeader.h */,
+				45A870702AAF11CA00C2A284 /* ABIController.h */,
+				45A870712AAF11CA00C2A284 /* TS28B.h */,
+				45A870722AAF11CA00C2A284 /* HFSmartLink.h */,
+				45A870732AAF11CA00C2A284 /* BP5SController.h */,
+				45A870742AAF11CA00C2A284 /* ConnectDeviceController.h */,
+				45A870752AAF11CA00C2A284 /* BG5S.h */,
+				45A870762AAF11CA00C2A284 /* BP5S.h */,
+				45A870772AAF11CA00C2A284 /* THV3.h */,
+				45A870782AAF11CA00C2A284 /* AM6.h */,
+				45A870792AAF11CA00C2A284 /* BG1.h */,
+				45A8707A2AAF11CA00C2A284 /* BG1SController.h */,
+				45A8707B2AAF11CA00C2A284 /* HS5Controller.h */,
+				45A8707C2AAF11CA00C2A284 /* HS2SPRO.h */,
+				45A8707D2AAF11CA00C2A284 /* BG5.h */,
+				45A8707E2AAF11CA00C2A284 /* ManageDeviceController.h */,
+				45A8707F2AAF11CA00C2A284 /* BGDevice.h */,
+				45A870802AAF11CA00C2A284 /* IDOErrorCodeToStr.h */,
+				45A870812AAF11CA00C2A284 /* THV3Controller.h */,
+				45A870822AAF11CA00C2A284 /* BP5SRWController.h */,
+				45A870832AAF11CA00C2A284 /* AM6Controller.h */,
+				45A870842AAF11CA00C2A284 /* BG1S.h */,
+				45A870852AAF11CA00C2A284 /* HS2.h */,
+				45A870862AAF11CA00C2A284 /* PO1Controller.h */,
+				45A870872AAF11CA00C2A284 /* BGHeader.h */,
+				45A870882AAF11CA00C2A284 /* DFUController.h */,
+				45A870892AAF11CA00C2A284 /* PO3.h */,
+				45A8708A2AAF11CA00C2A284 /* BP3LController.h */,
+				45A8708B2AAF11CA00C2A284 /* IDOSyncHeartRateDataModel.h */,
+				45A8708C2AAF11CA00C2A284 /* NT13BHeader.h */,
+				45A8708D2AAF11CA00C2A284 /* BG5Controller.h */,
+				45A8708E2AAF11CA00C2A284 /* AM3Controller.h */,
+				45A8708F2AAF11CA00C2A284 /* BPM1AE.h */,
+				45A870902AAF11CA00C2A284 /* BG1A.h */,
+				45A870912AAF11CA00C2A284 /* ABPM.h */,
+				45A870922AAF11CA00C2A284 /* IDOLogEnum.h */,
+				45A870932AAF11CA00C2A284 /* IDOSyncGpsDataModel.h */,
+				45A870942AAF11CA00C2A284 /* HealthHeader.h */,
+				45A870952AAF11CA00C2A284 /* IDOSyncPressureDataModel.h */,
+				45A870962AAF11CA00C2A284 /* IDOSyncSwimDataModel.h */,
+				45A870972AAF11CA00C2A284 /* HSHeader.h */,
+				45A870982AAF11CA00C2A284 /* DFUMacro.h */,
+				45A870992AAF11CA00C2A284 /* IDOTranEnum.h */,
+				45A8709A2AAF11CA00C2A284 /* BG5SController.h */,
+				45A8709B2AAF11CA00C2A284 /* AM3S_V2.h */,
+				45A8709C2AAF11CA00C2A284 /* IDOCommonMacro.h */,
+				45A8709D2AAF11CA00C2A284 /* IDORecordDeviceLog.h */,
+				45A8709E2AAF11CA00C2A284 /* ABPMController.h */,
+				45A8709F2AAF11CA00C2A284 /* NT13BMacroFile.h */,
+				45A870A02AAF11CA00C2A284 /* POMacroFile.h */,
+				45A870A12AAF11CA00C2A284 /* IDOSyncEnum.h */,
+				45A870A22AAF11CA00C2A284 /* POErrorTimeClass.h */,
+				45A870A32AAF11CA00C2A284 /* AM3.h */,
+				45A870A42AAF11CA00C2A284 /* IDOSyncSpo2DataModel.h */,
+				45A870A52AAF11CA00C2A284 /* KN550BTController.h */,
+				45A870A62AAF11CA00C2A284 /* IDODataMigrationManager.h */,
+				45A870A72AAF11CA00C2A284 /* BP7S.h */,
+				45A870A82AAF11CA00C2A284 /* PO3Controller.h */,
+				45A870A92AAF11CA00C2A284 /* HS3.h */,
+				45A870AA2AAF11CA00C2A284 /* AM4Controller.h */,
+				45A870AB2AAF11CA00C2A284 /* BPV25Device.h */,
+				45A870AC2AAF11CA00C2A284 /* PT3SBTMacroFile.h */,
+				45A870AD2AAF11CA00C2A284 /* HS2Controller.h */,
+				45A870AE2AAF11CB00C2A284 /* BP7SController.h */,
+				45A870AF2AAF11CB00C2A284 /* BPContinuaController.h */,
+				45A870B02AAF11CB00C2A284 /* BP3.h */,
+				45A870B12AAF11CB00C2A284 /* IDOPeripheralModel.h */,
+				45A870B22AAF11CB00C2A284 /* AMHeader.h */,
+				45A870B32AAF11CB00C2A284 /* BP3Controller.h */,
+				45A870B42AAF11CB00C2A284 /* ECGMacroFile.h */,
+				45A870B52AAF11CB00C2A284 /* BPV24Device.h */,
+				45A870B62AAF11CB00C2A284 /* ECG3.h */,
+				45A870B72AAF11CB00C2A284 /* IDOBluetoothManager.h */,
+				45A870B82AAF11CB00C2A284 /* BPMacroFile.h */,
+				45A870B92AAF11CB00C2A284 /* IDOBlueDataResponse.h */,
+				45A870BA2AAF11CB00C2A284 /* ECG3USBController.h */,
+				45A870BB2AAF11CB00C2A284 /* AM3SController_V2.h */,
+				45A870BC2AAF11CB00C2A284 /* NT13BController.h */,
+				45A870BD2AAF11CB00C2A284 /* ECG3USB.h */,
+				45A870BE2AAF11CB00C2A284 /* BP7.h */,
+				45A870BF2AAF11CB00C2A284 /* BGController.h */,
+				45A870C02AAF11CB00C2A284 /* PT3SBTController.h */,
+				45A870C12AAF11CB00C2A284 /* iHealthHS6.h */,
+				45A870C22AAF11CB00C2A284 /* AM4.h */,
+				45A870C32AAF11CB00C2A284 /* BP5SRW.h */,
+				45A870C42AAF11CB00C2A284 /* IDOWatchDialInfoModel.h */,
+				45A870C52AAF11CB00C2A284 /* DFUServerFirmwareInfo.h */,
+				45A870C62AAF11CB00C2A284 /* ABI.h */,
+				45A870C72AAF11CB00C2A284 /* IDOBluetoothEngine.h */,
+				45A870C82AAF11CB00C2A284 /* IDOSyncSportDataModel.h */,
+				45A870C92AAF11CB00C2A284 /* HS4.h */,
+				45A870CA2AAF11CB00C2A284 /* BPBV10Device.h */,
+				45A870CB2AAF11CB00C2A284 /* IDOBluetoothBaseModel.h */,
+				45A870CC2AAF11CB00C2A284 /* IDOFoundationCommand.h */,
+				45A870CD2AAF11CB00C2A284 /* TS28BController.h */,
+				45A870CE2AAF11CB00C2A284 /* IDOWatchDialManager.h */,
+				45A870CF2AAF11CB00C2A284 /* IDOSyncSleepDataModel.h */,
+				45A870D02AAF11CB00C2A284 /* HealthUser.h */,
+				45A870D12AAF11CB00C2A284 /* IDOSetInfoBluetoothModel.h */,
+				45A870D22AAF11CB00C2A284 /* IDOSyncManager.h */,
+				45A870D32AAF11CB00C2A284 /* BG1AController.h */,
+				45A870D42AAF11CB00C2A284 /* BG1Controller.h */,
+				45A870D52AAF11CB00C2A284 /* IDOBindEnum.h */,
+				45A870D62AAF11CB00C2A284 /* HFSmartLinkDeviceInfo.h */,
+				45A870D72AAF11CB00C2A284 /* BP5Controller.h */,
+				45A870D82AAF11CB00C2A284 /* THV3Macro.h */,
+				45A870D92AAF11CB00C2A284 /* HS2S.h */,
+				45A870DA2AAF11CB00C2A284 /* IDOBluetoothServices.h */,
+				45A870DB2AAF11CB00C2A284 /* PO1.h */,
+				45A870DC2AAF11CB00C2A284 /* HS4Controller.h */,
+				45A870DD2AAF11CB00C2A284 /* IDOBlueEnum.h */,
+				45A870DE2AAF11CB00C2A284 /* BP5C.h */,
+				45A870DF2AAF11CB00C2A284 /* TS28BHeader.h */,
+				45A870E02AAF11CB00C2A284 /* BP3L.h */,
+				45A870E12AAF11CB00C2A284 /* IHSDKCloudUser.h */,
+				45A870E22AAF11CB00C2A284 /* DFUDeviceFirmwareInfo.h */,
+				45A870E32AAF11CB00C2A284 /* ECG3Controller.h */,
+				45A870E42AAF11CB00C2A284 /* IDOSyncActivityDataModel.h */,
+				45A870E52AAF11CB00C2A284 /* KN550BT.h */,
+				45A870E62AAF11CB00C2A284 /* AM6Constants.h */,
+				45A870E72AAF11CB00C2A284 /* SDKInfo.h */,
+				45A870E82AAF11CB00C2A284 /* BPLoopMeasureSettingModel.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
