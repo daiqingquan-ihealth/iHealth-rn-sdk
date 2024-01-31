@@ -1394,10 +1394,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@ihealth/ihealthlibrary-react-native@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.npmmirror.com/@ihealth/ihealthlibrary-react-native/-/ihealthlibrary-react-native-1.5.1.tgz"
-  integrity sha512-wBAyUAmX9IsMnOH/WnObUc7ZWRX9byQpjyiGswihI2F4m+/HwEQtKmmWgP5lJr4m3t3A6CeUER5fuJ/ghnZyew==
+"@ihealth/ihealthlibrary-react-native@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.npmmirror.com/@ihealth/ihealthlibrary-react-native/-/ihealthlibrary-react-native-1.6.0.tgz#4fa8c98cc94db3337ebfff0278ec9d78fff85b7b"
+  integrity sha512-Teyiv42zSFl8CBdz/D1ROT9r5WnOr2GvetVPzQpq9CB/+PtkIRphHIAP1mzvfnT85JoGadOIDwG53wZ0kfrmYA==
 
 "@jest/create-cache-key-function@^29.2.1":
   version "29.5.0"

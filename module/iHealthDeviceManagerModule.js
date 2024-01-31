@@ -69,6 +69,8 @@ module.exports = {
     NT13B: RCTModule.NT13B,
 
     HS2S: RCTModule.HS2S,
+    
+    HS2SPRO: RCTModule.HS2SPRO,
 
     BG1S: RCTModule.BG1S,
 

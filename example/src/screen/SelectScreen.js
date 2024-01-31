@@ -11,7 +11,7 @@ const DeviceTypes = [
     'PO1', 'PO3',
     'ECG3', 'ECG3USB',
     'FDIR_V3','TS28B', 'NT13B', 'PT3SBT',
-    'HS2S'
+    'HS2S', 'HS2S Pro'
 ]
 
 const SelectScreen = ({ navigation }) => {

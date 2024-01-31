@@ -105,7 +105,7 @@ RCT_EXPORT_METHOD(getBattery:(nonnull NSString*)mac){
 
         [[self getHS2SWithMac:mac]commandGetHS2SBattery:^(NSNumber *battary) {
             
-            NSDictionary *deviceInfo = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_HS2S,kACTION_KEY:ACTION_BATTARY_HS,BATTERY_HS:battary};
+            NSDictionary *deviceInfo = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_HS2S,kACTION_KEY:ACTION_BATTARY_HS,HS2S_DEVICE_BATTERY:battary};
                        
             [self.bridge.eventDispatcher sendDeviceEventWithName:EVENT_NOTIFY body:deviceInfo];
                        
@@ -440,7 +440,7 @@ RCT_EXPORT_METHOD(getMemoryData:(nonnull NSString*)mac :(nonnull NSString*)userI
                         
                         [resultDic setValue:[tempDic valueForKey:@"HS2SStandardWeight"] forKey:HS2S_STANDARD_WEIGHT];
                         
-                        [resultDic setValue:[tempDic valueForKey:@"HS2SSkeletalMuscle"] forKey:HS2S_STANDARD_WEIGHT];
+                        [resultDic setValue:[tempDic valueForKey:@"HS2SSkeletalMuscle"] forKey:HS2S_SKELETAL_MUSCLE_MASS];
                         
                          [resultDic setValue:[tempDic valueForKey:@"HS2SBodyWaterPercentAge"] forKey:HS2S_BODY_WATER_RATE];
                         
@@ -752,7 +752,7 @@ RCT_EXPORT_METHOD(measure:(nonnull NSString*)mac :(nonnull NSNumber*)userType :(
             
             [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SStandardWeight"] forKey:HS2S_STANDARD_WEIGHT];
             
-            [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SSkeletalMuscle"] forKey:HS2S_STANDARD_WEIGHT];
+            [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SSkeletalMuscle"] forKey:HS2S_SKELETAL_MUSCLE_MASS];
             
              [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SBodyWaterPercentAge"] forKey:HS2S_BODY_WATER_RATE];
             
@@ -888,7 +888,7 @@ RCT_EXPORT_METHOD(setDeviceLightUp:(nonnull NSString*)mac){
 }
 
 
-RCT_EXPORT_METHOD(enterHS2SHeartRateMeasurementMode:(nonnull NSString*)mac){
+RCT_EXPORT_METHOD(enterHS2SProHeartRateMeasurementMode:(nonnull NSString*)mac){
     
     
     __weak typeof(self) weakSelf = self;
@@ -937,7 +937,7 @@ RCT_EXPORT_METHOD(enterHS2SHeartRateMeasurementMode:(nonnull NSString*)mac){
 }
 
 
-RCT_EXPORT_METHOD(exitHS2SHeartRateMeasurementMode:(nonnull NSString*)mac){
+RCT_EXPORT_METHOD(exitHS2SProHeartRateMeasurementMode:(nonnull NSString*)mac){
     
     
     __weak typeof(self) weakSelf = self;

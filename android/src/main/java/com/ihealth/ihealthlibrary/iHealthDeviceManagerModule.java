@@ -54,6 +54,7 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
     private final static String KN550 = "KN550";
     private final static String HS2   = "HS2";
     private final static String HS2S  = "HS2S";
+    private final static String HS2SPRO  = "HS2S Pro";
     private final static String HS4   = "HS4";
     private final static String HS4S  = "HS4S";
     //    private final static String HS6 = "HS6";
@@ -238,8 +239,11 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
                 break;
 
             case iHealthDevicesManager.TYPE_HS2S:
-            case iHealthDevicesManager.TYPE_HS2SPRO:
                 module = getReactApplicationContext().getNativeModule(HS2SModule.class);
+                break;
+
+            case iHealthDevicesManager.TYPE_HS2SPRO:
+                module = getReactApplicationContext().getNativeModule(HS2SProModule.class);
                 break;
 
             case iHealthDevicesManager.TYPE_HS4:
@@ -427,6 +431,9 @@ public class iHealthDeviceManagerModule extends iHealthBaseModule implements Lif
 
             case "HS2S":
                 return DiscoveryTypeEnum.HS2S;
+
+            case "HS2S Pro":
+                return DiscoveryTypeEnum.HS2SPRO;
 
             case "HS4":
                 return DiscoveryTypeEnum.HS4;

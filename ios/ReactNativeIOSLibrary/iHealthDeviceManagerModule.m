@@ -306,6 +306,13 @@ RCT_EXPORT_MODULE()
         
         [[AM6Controller shareAM6Controller] configAM6DeviceBleParameters];
         
+        
+        // HS2SPRO
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDiscover:) name:HS2SPRODiscover object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnectFailed:) name:HS2SPROConnectFailed object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceConnect:) name:HS2SPROConnectNoti object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(deviceDisconnect:) name:HS2SPRODisConnectNoti object:nil];
+        
        
         [AM3Controller shareIHAM3Controller];
         [AM3SController_V2 shareIHAM3SController];
@@ -322,6 +329,7 @@ RCT_EXPORT_MODULE()
         [HS4Controller shareIHHs4Controller];
         [HS2Controller shareIHHs2Controller];
         [HS2SController shareIHHS2SController];
+        [HS2SPROController shareIHHS2SPROController];
         [THV3Controller sharedController];
         [NT13BController shareIHNT13BController];
         [BG1SController shareIHBG1SController];
@@ -462,6 +470,7 @@ RCT_EXPORT_MODULE()
                                         @"PO1":kType_PO1,
                                         @"PT3SBT":kType_PT3SBT,
                                         @"BG1A":kType_BG1A,
+                                        @"HS2S Pro":kType_HS2S_PRO,
                                         };
     
     if (deviceNameForType[deviceName] && [self serialNumebr:userInfo]){
@@ -803,6 +812,10 @@ RCT_EXPORT_METHOD(startDiscovery:(nonnull NSString *)deviceType){
         
         [[ScanDeviceController commandGetInstance] commandScanDeviceType:HealthDeviceType_HS2S];
         
+    }else if ([deviceType isEqualToString:kType_HS2S_PRO]){
+        
+        [[ScanDeviceController commandGetInstance] commandScanDeviceType:HealthDeviceType_HS2SPro];
+        
     }else if ([deviceType isEqualToString:kType_TS28B]){
         
        self.ts28bController = [TS28BController sharedController];
@@ -909,8 +922,6 @@ RCT_EXPORT_METHOD(stopDiscovery){
     
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_ECG3];
     
-    [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_ECG3];
-    
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_THV3];
     
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_BG5S];
@@ -929,6 +940,8 @@ RCT_EXPORT_METHOD(stopDiscovery){
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_BG1A];
     
     [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_AM6];
+    
+    [[ScanDeviceController commandGetInstance] commandStopScanDeviceType:HealthDeviceType_HS2SPro];
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:kEvent_Scan_Finish body:nil];
 }
@@ -1119,6 +1132,13 @@ RCT_EXPORT_METHOD(connectDevice:(nonnull NSString *)mac type:(nonnull NSString *
     }else if ([deviceType isEqualToString:kType_HS2S]){
         
         [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_HS2S andSerialNub:mac];
+    }else if ([deviceType isEqualToString:kType_HS2S_PRO]){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_HS2SPro andSerialNub:mac];
+        });
+        
+       
     }else if ([deviceType isEqualToString:kType_PO1]){
         
         [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_PO1 andSerialNub:mac];

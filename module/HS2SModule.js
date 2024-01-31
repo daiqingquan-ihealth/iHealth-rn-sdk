@@ -29,9 +29,11 @@ module.exports = {
   setUnit: function (mac,unit) {
     RCTModule.setUnit(mac,unit)
   },
+
   getUserInfo: function (mac) {
     RCTModule.getUserInfo(mac)
   },
+  
   updateUserInfo: function (mac,userID,createTS,weight,age,height,sex,impedanceMark,fitnessMark) {
     RCTModule.updateUserInfo(mac,userID,createTS,weight,age,height,sex,impedanceMark,fitnessMark);
   },

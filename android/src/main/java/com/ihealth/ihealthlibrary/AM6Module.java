@@ -12,7 +12,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.ihealth.communication.control.Am6Control;
 import com.ihealth.communication.control.Am6Profile;
-import com.ihealth.sdk.command.Am6Command.AlarmClockInfo;
+import com.ihealth.sdk.command.am6.Am6Command.AlarmClockInfo;
 import com.ihealth.communication.manager.iHealthDevicesManager;
 
 import java.security.MessageDigest;

@@ -172,7 +172,7 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 8982T47U8J;
+						DevelopmentTeam = 3Q553VZ29W;
 						LastSwiftMigration = 1250;
 					};
 				};
@@ -327,7 +327,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleRNSDKDemo/SimpleRNSDKDemo.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8982T47U8J;
+				DEVELOPMENT_TEAM = 3Q553VZ29W;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -343,7 +343,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern1;
 				PRODUCT_NAME = SimpleRNSDKDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -360,7 +360,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SimpleRNSDKDemo/SimpleRNSDKDemo.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8982T47U8J;
+				DEVELOPMENT_TEAM = 3Q553VZ29W;
 				INFOPLIST_FILE = SimpleRNSDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -371,7 +371,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern1;
 				PRODUCT_NAME = SimpleRNSDKDemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

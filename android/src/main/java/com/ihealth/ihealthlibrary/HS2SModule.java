@@ -11,7 +11,9 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.ihealth.communication.control.Hs2sControl;
+import com.ihealth.communication.control.Hs2sProControl;
 import com.ihealth.communication.manager.iHealthDevicesManager;
+import com.ihealth.communication.utils.ByteBufferUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,198 +42,199 @@ public class HS2SModule extends iHealthBaseModule {
         return map;
     }
 
-    private static Hs2sControl getControl(String mac) {
+    private static Hs2sControl getHs2sControl(String mac) {
         return iHealthDevicesManager.getInstance().getHs2sControl(mac);
     }
 
+
     @ReactMethod
     public void getDeviceInfo(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getDeviceInfo();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getDeviceInfo();
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void disconnect(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.disconnect();
-        } else {
-            Log.e(TAG, "Can not find HS2 Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.disconnect();
+            return;
+        }   
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getBattery(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getBattery();
-        } else {
-            Log.e(TAG, "Can not find HS2 Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getBattery();
+            return;
+        }        
+        Log.e(TAG, "Can not find HS2S/HS2SPRO Control mac:" + mac);
     }
 
     @ReactMethod
     public void setUnit(String mac, int unit) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.setUnit(unit);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.setUnit(unit);
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getUserInfo(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getUserInfo();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getUserInfo();
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void updateUserInfo(String mac, String id, int createTS, float weight, int age, int height, int gender, int impedance, int bodybuilding) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.createOrUpdateUserInfo(id, weight, gender, age, height, impedance, bodybuilding);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.createOrUpdateUserInfo(id, weight, gender, age, height, impedance, bodybuilding);
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void deleteUser(String mac, String id) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.deleteUserInfo(id);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.deleteUserInfo(id);
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void specifyTouristUsers(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.specifyTouristUsers();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.specifyTouristUsers();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void measure(String mac, int index, String id, int ts, float weight, int age, int height, int gender, int impedance, int bodybuilding) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.specifyOnlineUsers(id, weight, gender, age, height, impedance, bodybuilding);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.specifyOnlineUsers(id, weight, gender, age, height, impedance, bodybuilding);
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getMemoryDataCount(String mac, String id) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getOfflineDataCount(id);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getOfflineDataCount(id);
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getMemoryData(String mac, String id) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getOfflineData(id);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
-        }
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getOfflineData(id);
+            return;
+        } 
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void deleteMemoryData(String mac, String id) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.deleteOfflineData(id);
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.deleteOfflineData(id);
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getAnonymousMemoryDataCount(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getAnonymousDataCount();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getAnonymousDataCount();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void getAnonymousMemoryData(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.getAnonymousData();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.getAnonymousData();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void deleteAnonymousMemoryData(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.deleteAnonymousData();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.deleteAnonymousData();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void resetDevice(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.restoreFactorySettings();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.restoreFactorySettings();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void setDeviceLightUp(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.setBleLight();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.setBleLight();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @ReactMethod
     public void enterHS2SHeartRateMeasurementMode(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.startHeartRateMode();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.startHeartRateMode();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S/HS2SPRO Control mac:" + mac);
     }
 
     @ReactMethod
     public void exitHS2SHeartRateMeasurementMode(String mac) {
-        Hs2sControl control = getControl(mac);
-        if (control != null) {
-            control.stopHeartRateMode();
-        } else {
-            Log.e(TAG, "Can not find HS2S Control mac:" + mac);
+        Hs2sControl hs2sControl = getHs2sControl(mac);
+        if (hs2sControl != null) {
+            hs2sControl.stopHeartRateMode();
+            return;
         }
+        Log.e(TAG, "Can not find HS2S Control mac:" + mac);
     }
 
     @Override
@@ -301,7 +304,6 @@ public class HS2SModule extends iHealthBaseModule {
             params.putNull("describe");
             params.putNull("status");
         }
-
         sendEvent(EVENT_NOTIFY, params);
     }
 
@@ -317,6 +319,6 @@ public class HS2SModule extends iHealthBaseModule {
             params.putArray("devices", array);
             params.putString("action", ACTION_GET_ALL_CONNECTED_DEVICES);
         }
-        sendEvent(EVENT_NOTIFY, params);
+        sendEvent(EVENT_NOTIFY, params);  
     }
 }

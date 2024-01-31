@@ -20,6 +20,7 @@ var Component = {
     POProfileModule: require('./module/POProfileModule'),
     HS2Module: require('./module/HS2Module'),
     HS2SModule: require('./module/HS2SModule'),
+    HS2SProModule: require('./module/HS2SProModule'),
     HS4SModule: require('./module/HS4SModule'),
     HSProfileModule: require('./module/HSProfileModule'),
     HS2SProfileModule: require('./module/HS2SProfileModule'),

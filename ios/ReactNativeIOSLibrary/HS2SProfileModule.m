@@ -131,8 +131,6 @@ RCT_EXPORT_MODULE()
              
              @"HS2S_WEIGHT_CONTROL":HS2S_WEIGHT_CONTROL,
              
-             @"HS2S_WEIGHT_CONTROL":HS2S_WEIGHT_CONTROL,
-             
              @"HS2S_STANDARD_WEIGHT":HS2S_STANDARD_WEIGHT,
              
              @"HS2S_SKELETAL_MUSCLE_MASS":HS2S_SKELETAL_MUSCLE_MASS,
