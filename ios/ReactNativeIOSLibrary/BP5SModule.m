@@ -414,6 +414,30 @@ RCT_EXPORT_METHOD(disconnect:(nonnull NSString *)mac){
     }
 }
 
+#pragma mark - Method
 
+RCT_EXPORT_METHOD(getHardwareVersion:(nonnull NSString *)mac){
+    
+    if ([self getDeviceWithMac:mac]!=nil) {
+        __weak typeof(self) weakSelf = self;
+       
+        BP5S*device=[self getDeviceWithMac:mac];
+            NSDictionary* response = @{
+                kACTION:kACTION_GET_HARDWARE_VERSION,
+                kHARDWARE_VERSION: device.hardwareVersion,
+                kType:Device_Type,
+                kMAC:mac
+            };
+            [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+            
+       
+    }else{
+        
+        [BPProfileModule sendErrorToBridge:self.bridge eventNotify:EVENT_NOTIFY WithCode:BPDidDisconnect mac:mac type:Device_Type];
+        
+    }
+    
+    
+}
 
 @end

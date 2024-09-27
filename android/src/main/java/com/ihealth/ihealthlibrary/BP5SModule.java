@@ -12,7 +12,10 @@ import com.facebook.react.module.annotations.ReactModule;
 import com.ihealth.communication.control.Bp5sControl;
 import com.ihealth.communication.control.BpProfile;
 import com.ihealth.communication.manager.iHealthDevicesManager;
+import com.ihealth.communication.manager.iHealthDevicesIDPS;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -151,5 +154,25 @@ public class BP5SModule extends iHealthBaseModule {
             params.putString("action", ACTION_GET_ALL_CONNECTED_DEVICES);
         }
         sendEvent(EVENT_NOTIFY, params);
+    }
+
+    @ReactMethod
+    public void getHardwareVersion(String mac) {
+        try {
+                String idps = iHealthDevicesManager.getInstance().getDevicesIDPS(mac);;
+                JSONObject jsonObj = new JSONObject(idps);
+                String hardwareVersion = jsonObj.getString(iHealthDevicesIDPS.HARDWAREVERSION);
+                WritableMap params = Arguments.createMap();
+                params.putString("action","action_get_hardwareVersion");
+                params.putString("mac", mac);
+                params.putString("type", "BP5S");
+                params.putString("hardwareVersion",hardwareVersion);
+                
+                sendEvent(EVENT_NOTIFY, params);
+
+            } catch (JSONException e) {
+                senErrMessage(400);
+                e.printStackTrace();
+            }
     }
 }
