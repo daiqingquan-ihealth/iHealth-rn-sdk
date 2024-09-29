@@ -18,6 +18,8 @@
 #import "ConnectDeviceController.h"
 #define EVENT_NOTIFY @"BP5S.MODULE.NOTIFY"
 
+#define Device_Type @"BP5S"
+
 @interface BP5SModule ()
 @property (nonatomic, assign) BOOL isMeasuring;
 
@@ -252,17 +254,22 @@ RCT_EXPORT_METHOD(getBattery:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
         __weak typeof(self) weakSelf = self;
-        [[self getDeviceWithMac:mac] commandEnergy:^(NSNumber *energyValue) {
-            NSDictionary* response = @{
-                                       @"mac":mac,
-                                       kACTION:kACTION_BATTERY_BP,
-                                       kBATTERY_BP:energyValue
-                                       };
-            [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
-        } errorBlock:^(BPDeviceError error) {
-            NSLog(@"error %lu",(unsigned long)error);
-            [BPProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithCode:error];
-        }];
+			
+			[[self getDeviceWithMac:mac] commandEnergy:^(NSNumber *energyValue) {
+				NSDictionary* response = @{
+																	 @"mac":mac,
+																	 kACTION:kACTION_BATTERY_BP,
+																	 kBATTERY_BP:energyValue
+																	 };
+				[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+			} energyState:^(NSNumber *energyState) {
+				
+				
+			} errorBlock:^(BPDeviceError error) {
+				NSLog(@"error %lu",(unsigned long)error);
+				[BPProfileModule sendErrorToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithCode:error];
+			}];
+        
     }else{
         NSLog(@"error %lu",(unsigned long)BPDidDisconnect);
         [BPProfileModule sendErrorToBridge:self.bridge eventNotify:EVENT_NOTIFY WithCode:BPDidDisconnect];
@@ -323,32 +330,30 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
                 NSString *dateStr = [mydateFormatter stringFromDate:tempDate];
                 
                 NSNumber*bpHSD=[history valueForKey:@"hsdValue"];
-                NSDictionary *dic=[NSDictionary dictionary];
-                if (bpHSD!=nil) {
-                    dic = @{
-                            @"mac":mac,
-                            kMEASUREMENT_DATE_BP: dateStr,
-                            kLOW_BLOOD_PRESSURE_BP: [history objectForKey:@"dia"],
-                            kHIGH_BLOOD_PRESSURE_BP: [history objectForKey:@"sys"],
-                            kMEASUREMENT_AHR_BP: [history objectForKey:@"irregular"],
-                            kPULSE_BP: [history objectForKey:@"heartRate"],
-                            kDATAID: [history objectForKey:@"dataID"],
-                            kMEASUREMENT_HSD_BP: history[@"hsdValue"]
-                            };
-                }else{
-                    
-                    
-                    dic = @{
-                            @"mac":mac,
-                            kMEASUREMENT_DATE_BP: dateStr,
-                            kLOW_BLOOD_PRESSURE_BP: [history objectForKey:@"dia"],
-                            kHIGH_BLOOD_PRESSURE_BP: [history objectForKey:@"sys"],
-                            kMEASUREMENT_AHR_BP: [history objectForKey:@"irregular"],
-                            kPULSE_BP: [history objectForKey:@"heartRate"],
-                            kDATAID: [history objectForKey:@"dataID"]
-                            
-                            };
-                }
+							
+							  NSNumber*isRightTime=[history valueForKey:@"isRightTime"];
+							
+							NSMutableDictionary *dic=[NSMutableDictionary dictionary];
+							
+							
+							[dic setValue:mac forKey:@"mac"];
+							[dic setValue:dateStr forKey:kMEASUREMENT_DATE_BP];
+							[dic setValue:[history objectForKey:@"dia"] forKey:kLOW_BLOOD_PRESSURE_BP];
+							[dic setValue:[history objectForKey:@"sys"] forKey:kHIGH_BLOOD_PRESSURE_BP];
+							[dic setValue:[history objectForKey:@"irregular"] forKey:kMEASUREMENT_AHR_BP];
+							[dic setValue:[history objectForKey:@"heartRate"] forKey:kPULSE_BP];
+							[dic setValue:[history objectForKey:@"dataID"] forKey:kDATAID];
+							
+							
+							if (bpHSD!=nil) {
+							
+								[dic setValue:history[@"hsdValue"] forKey:kMEASUREMENT_HSD_BP];
+							}
+							
+							if (isRightTime!=nil) {
+								[dic setValue:isRightTime forKey:kTIME_Right];
+							}
+							
                 [tempArr addObject:dic];
             }
             
@@ -379,18 +384,41 @@ RCT_EXPORT_METHOD(getFunctionInfo:(nonnull NSString *)mac){
     if ([self getDeviceWithMac:mac]!=nil) {
         __weak typeof(self) weakSelf = self;
         [[self getDeviceWithMac:mac] commandFunction:^(NSDictionary *dic) {
+					
+					if ([dic objectForKey:@"deviceSysTime"]!=nil && [dic objectForKey:@"deviceTime"]!=nil) {
+						
+						NSDictionary* response = @{
+																			 @"mac":mac,
+																			 kACTION:kACTION_FUNCTION_INFORMATION_BP,
+																			 kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
+																			 kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
+																			 kFUNCTION_HAVE_ANGLE_SENSOR: [dic objectForKey:@"haveAngleSensor"],
+																			 kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
+																			 kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
+																			 kFUNCTION_IS_MULTI_UPLOAD: [dic objectForKey:@"mutableUpload"],
+																			 kFUNCTION_HAVE_SELF_UPDATE: [dic objectForKey: @"selfUpdate"],
+																			 kFUNCTION_DEVICE_TIME: [dic objectForKey: @"deviceTime"],
+																			 kFUNCTION_DEVICE_SYSTIME: [dic objectForKey: @"deviceSysTime"]};
+						[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+						
+					}else{
+						
+						NSDictionary* response = @{
+																			 @"mac":mac,
+																			 kACTION:kACTION_FUNCTION_INFORMATION_BP,
+																			 kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
+																			 kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
+																			 kFUNCTION_HAVE_ANGLE_SENSOR: [dic objectForKey:@"haveAngleSensor"],
+																			 kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
+																			 kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
+																			 kFUNCTION_IS_MULTI_UPLOAD: [dic objectForKey:@"mutableUpload"],
+																			 kFUNCTION_HAVE_SELF_UPDATE: [dic objectForKey: @"selfUpdate"]};
+						[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+						
+						
+					}
             
-            NSDictionary* response = @{
-                                       @"mac":mac,
-                                       kACTION:kACTION_FUNCTION_INFORMATION_BP,
-                                       kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
-                                       kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
-                                       kFUNCTION_HAVE_ANGLE_SENSOR: [dic objectForKey:@"haveAngleSensor"],
-                                       kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
-                                       kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
-                                       kFUNCTION_IS_MULTI_UPLOAD: [dic objectForKey:@"mutableUpload"],
-                                       kFUNCTION_HAVE_SELF_UPDATE: [dic objectForKey: @"selfUpdate"]};
-            [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+           
             
         } errorBlock:^(BPDeviceError error) {
             

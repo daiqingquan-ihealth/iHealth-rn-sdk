@@ -97,7 +97,16 @@ RCT_EXPORT_MODULE()
              @"ACTION_GET_FIRMWARE_VERSION":kACTION_GET_FIRMWARE_VERSION,
              
              @"FIRMWARE_VERSION":kFIRMWARE_VERSION,
-             
+						 
+						 @"ACTION_GET_HARDWARE_VERSION":kACTION_GET_HARDWARE_VERSION,
+						 
+						 @"HARDWARE_VERSION":kHARDWARE_VERSION,
+						 
+						 @"FUNCTION_DEVICE_TIME":kFUNCTION_DEVICE_TIME,
+						 
+						 @"FUNCTION_DEVICE_SYSTIME":kFUNCTION_DEVICE_SYSTIME,
+						 
+						 @"TIME_RIGHT":kTIME_Right
              };
 }
 + (BOOL)requiresMainQueueSetup

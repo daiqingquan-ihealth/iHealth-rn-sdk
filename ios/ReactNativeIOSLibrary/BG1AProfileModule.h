@@ -105,7 +105,33 @@
 
 
 
+#define BG1A_RESULT_KEY_BATTERY_VOLTAGE @"data_log_battery_voltage"
 
+#define BG1A_RESULT_KEY_OPEN @"data_log_time_open"
+
+#define BG1A_RESULT_KEY_XM @"data_log_time_xm"
+
+#define BG1A_RESULT_KEY_ERROR_CODE @"data_log_error_code"
+
+#define BG1A_RESULT_KEY_CTL @"data_log_is_ctl"
+
+#define BG1A_RESULT_KEY_AVG @"data_log_is_avg"
+
+#define BG1A_RESULT_KEY_I0 @"data_log_i0"
+
+#define BG1A_RESULT_KEY_I1 @"data_log_i1"
+
+#define BG1A_RESULT_KEY_I2 @"data_log_i2"
+
+#define BG1A_RESULT_KEY_I3 @"data_log_i3"
+
+#define BG1A_RESULT_KEY_TEMPERATURE @"data_log_temperature"
+
+#define BG1A_RESULT_KEY_STRIP_TYPE @"data_log_strip_type"
+
+#define BG1A_RESULT_KEY_UNIT @"data_log_unit"
+
+#define BG1A_RESULT_KEY_RESISTANCE @"data_log_resistance"
 
 
 
