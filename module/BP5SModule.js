@@ -20,7 +20,7 @@ module.exports = {
   startMeasure: (mac) => {
     if (RCTModule != null) {
       RCTModule.startMeasure(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -28,7 +28,7 @@ module.exports = {
   stopMeasure: (mac) => {
     if (RCTModule != null) {
       RCTModule.stopMeasure(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
 
@@ -37,15 +37,15 @@ module.exports = {
   deleteData: (mac) => {
     if (RCTModule != null) {
       RCTModule.deleteData(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
 
   enbleOffline: (mac, mode) => {
     if (RCTModule != null) {
-        RCTModule.enbleOffline(mac, mode);
-    }else {
+      RCTModule.enbleOffline(mac, mode);
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -58,7 +58,7 @@ module.exports = {
   getBattery: (mac) => {
     if (RCTModule != null) {
       RCTModule.getBattery(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -70,7 +70,7 @@ module.exports = {
   getOffLineNum: (mac) => {
     if (RCTModule != null) {
       RCTModule.getOffLineNum(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -82,7 +82,7 @@ module.exports = {
   getOffLineData: (mac) => {
     if (RCTModule != null) {
       RCTModule.getOffLineData(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -95,7 +95,7 @@ module.exports = {
   setUnit: (mac, unit) => {
     if (RCTModule != null) {
       RCTModule.setUnit(mac, unit);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -108,7 +108,7 @@ module.exports = {
   getFunctionInfo: (mac) => {
     if (RCTModule != null) {
       RCTModule.getFunctionInfo(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -123,7 +123,7 @@ module.exports = {
   disconnect: (mac) => {
     if (RCTModule != null) {
       RCTModule.disconnect(mac);
-    }else {
+    } else {
       console.log('~~~~~ RCTModule is null')
     }
   },
@@ -135,5 +135,18 @@ module.exports = {
    */
   getAllConnectedDevices: () => {
     RCTModule.getAllConnectedDevices()
+  },
+
+  /**
+  * Get the BP5S device's hardwareVersion.
+  * @param {string} mac Device's mac address
+  */
+  getHardwareVersion: function (mac) {
+    if (RCTModule != null) {
+      RCTModule.getHardwareVersion(mac);
+    } else {
+      console.log('~~~~~ RCTModule is null')
+    }
+
   }
 };
