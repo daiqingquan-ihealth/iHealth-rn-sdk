@@ -343,7 +343,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern;
 				PRODUCT_NAME = SimpleRNSDKDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -371,7 +371,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihealthlabs.sdk.simplern;
 				PRODUCT_NAME = SimpleRNSDKDemo;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

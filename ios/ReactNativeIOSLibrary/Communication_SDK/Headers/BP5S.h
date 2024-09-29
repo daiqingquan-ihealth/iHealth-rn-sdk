@@ -20,7 +20,7 @@
  *  @Notice   By the first time of new user register via SDK, ‘iHealth disclaimer’ will pop up automatically, and require the user agrees to continue. SDK application requires Internet connection; there is 10-day tryout if SDK cannot connect Internet, SDK is fully functional during tryout period, but will be terminated without verification through Internet after 10 days.
  * @param  totalCount item quantity of total data
  * @param  progress upload completion ratio , from 0.0 to 1.0 or 0%~100％, 100% means upload completed.
- * @param  uploadDataArray    offline data set, including measurement time, systolic pressure, diastolic pressure, pulse rate, irregular judgment,scheme ID,body movement flag. corresponding KEY as time, sys, dia, heartRate, irregular,schemeID,bodyMovementFlg.
+ * @param  uploadDataArray    offline data set, including measurement time, systolic pressure, diastolic pressure, pulse rate, irregular judgment,scheme ID,body movement flag. corresponding KEY as time, sys, dia, heartRate, irregular,schemeID,bodyMovementFlg.(The hardware version  more than or equal to 2.0.0 add  isRightTime field. This field marks whether the historical data needs time correction (0: no need 1: need correction))
  * @param error   error codes.
  */
 -(void)commandTransferMemoryDataWithTotalCount:(BlockBachCount)totalCount progress:(BlockBachProgress)progress dataArray:(BlockBachArray)uploadDataArray errorBlock:(BlockError)error;
@@ -36,7 +36,7 @@
 
 /**
  * * Synchronize time and return the function and states that the device supports
- * @param function  A block to return the function and states that the device supports,judge if the device supports the function of up Air Measurement, arm Measurement,the last operation status,the max memory capacity, HSD, Offline Memory, mutable Groups Upload, Self Upgrade. ‘True’ means yes or on, ‘False’ means no or off.
+ * @param function  A block to return the function and states that the device supports,judge if the device supports the function of up Air Measurement, arm Measurement,the last operation status,the max memory capacity, HSD, Offline Memory, mutable Groups Upload, Self Upgrade. ‘True’ means yes or on, ‘False’ means no or off.（Hardware version  more than or equal to 2.0.0 support  deviceSysTime and deviceTime）
  * @param error  A block to refer ‘error’ in ‘Establish measurement connection’ in BP5S.
  */
 -(void)commandFunction:(BlockDeviceFunction)function errorBlock:(BlockError)error;

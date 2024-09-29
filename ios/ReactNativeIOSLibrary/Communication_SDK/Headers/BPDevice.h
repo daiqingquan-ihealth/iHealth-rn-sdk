@@ -93,6 +93,13 @@
 -(void)commandFunction:(BlockDeviceFunction)function errorBlock:(BlockError)error;
 
 /**
+ * Synchronize time and judge if the device supports BT auto-connection, offline detection, and if the function on or off, corresponding KEY are haveBlue, haveOffline, blueOpen, offlineOpen. ‘True’ means yes or on, ‘False’ means no or off
+ * @param function  A block to return the function and states that the device supports.
+ * @param error  Return error codes.
+ */
+-(void)commandBP5SNewFunction:(BlockDeviceFunction)function errorBlock:(BlockError)error;
+
+/**
  * Get battery remaining energy by percent
  * @param energyValue  A block to return the device battery remaining energy percentage, ‘80’ stands for 80%.
  * @param error  Return error codes.

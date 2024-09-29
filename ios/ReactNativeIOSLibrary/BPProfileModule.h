@@ -77,6 +77,10 @@
 #define kFUNCTION_HAVE_SELF_UPDATE @"selfUpdate"
 #define kFUNCTION_HAVE_HSD @"haveHSD"
 
+
+#define kFUNCTION_DEVICE_TIME @"deviceTime"
+#define kFUNCTION_DEVICE_SYSTIME @"deviceSysTime"
+
 #define kANGLE_BP @"angle"
 
 #define kWHICH_ARM @"which_arm"
@@ -92,6 +96,12 @@
 #define kBACKLIGHT_ON_BP @"is_backLight_on_bp"
 
 #define kCLOCK_ON_BP @"is_clock_on_bp"
+
+#define kHARDWARE_VERSION @"hardwareVersion"
+
+#define kACTION_GET_HARDWARE_VERSION @"action_get_hardwareVersion"
+
+#define kTIME_Right @"isRightTime"
 
 
 
