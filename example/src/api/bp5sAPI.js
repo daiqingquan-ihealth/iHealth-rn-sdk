@@ -10,7 +10,6 @@ export default {
     getOffLineNum: (mac) => BP5SModule.getOffLineNum(mac),
     getOffLineData: (mac) => BP5SModule.getOffLineData(mac),
     deleteData: (mac) => BP5SModule.deleteData(mac),
-    setUnit: (mac, unit) => BP5SModule.setUnit(mac, unit),
     getFunctionInfo: (mac) => BP5SModule.getFunctionInfo(mac),
     disconnect: (mac) => BP5SModule.disconnect(mac),
     getHardwareVersion: (mac) => BP5SModule.getHardwareVersion(mac)

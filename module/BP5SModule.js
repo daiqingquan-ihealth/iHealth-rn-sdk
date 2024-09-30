@@ -88,19 +88,6 @@ module.exports = {
   },
 
   /**
-   * Set BP7S device unit.
-   * @param {string} mac Device's mac address
-   * @param {int} unit 0:mmHg,1:kPa
-   */
-  setUnit: (mac, unit) => {
-    if (RCTModule != null) {
-      RCTModule.setUnit(mac, unit);
-    } else {
-      console.log('~~~~~ RCTModule is null')
-    }
-  },
-
-  /**
    * Get the BP7S device's functionInfo.
    * @param {string} mac Device's mac address
    */
