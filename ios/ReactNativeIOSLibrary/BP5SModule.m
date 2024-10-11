@@ -27,6 +27,8 @@
 @interface BP5SModule ()
 @property (nonatomic, assign) BOOL isMeasuring;
 
+@property (nonatomic, copy) NSNumber* bpPr;
+
 @end
 
 
@@ -98,17 +100,19 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
             weakSelf.isMeasuring = YES;
             NSDictionary* response = @{
 							kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,
-                                       kACTION:isComplete ? kACTION_ZOREING_BP : kACTION_ZOREOVER_BP,
+                                       kACTION:isComplete ? kACTION_ZOREOVER_BP : kACTION_ZOREING_BP,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } pressure:^(NSArray *pressureArr) {
             weakSelf.isMeasuring = YES;
+					
+					weakSelf.bpPr=pressureArr.firstObject;
             
             NSDictionary* response = @{
                                        kMAC_KEY:mac,
 																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PRESSURE_BP,
-                                       kBLOOD_PRESSURE_BP:pressureArr.firstObject,
+                                       kBLOOD_PRESSURE_BP:weakSelf.bpPr,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } waveletWithHeartbeat:^(NSArray *waveletArr) {
@@ -119,7 +123,8 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
 																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PULSEWAVE_BP,
                                        kFLAG_HEARTBEAT_BP:@(1),
-                                       kPULSEWAVE_BP:waveletArr
+                                       kPULSEWAVE_BP:waveletArr,
+																			 kBLOOD_PRESSURE_BP:weakSelf.bpPr,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } waveletWithoutHeartbeat:^(NSArray *waveletArr) {
@@ -130,7 +135,8 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
 																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PULSEWAVE_BP,
                                        kFLAG_HEARTBEAT_BP:@(0),
-                                       kPULSEWAVE_BP:waveletArr
+                                       kPULSEWAVE_BP:waveletArr,
+																			 kBLOOD_PRESSURE_BP:weakSelf.bpPr,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } result:^(NSDictionary *resultDict) {
@@ -326,11 +332,11 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
         
         [[self getDeviceWithMac:mac] commandTransferMemoryDataWithTotalCount:^(NSNumber *count) {
             if ([count integerValue] == 0) {
-                NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_HISTORICAL_DATA_BP };
+                NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_GETHISTORY_OVER_BP };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
 						}else{
 							
-							NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_GETHISTORY_OVER_BP };
+							NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_HISTORICAL_DATA_BP };
 							[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
 						}
         } progress:^(NSNumber *progress) {
