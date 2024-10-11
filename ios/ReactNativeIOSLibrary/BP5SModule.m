@@ -18,7 +18,11 @@
 #import "ConnectDeviceController.h"
 #define EVENT_NOTIFY @"BP5S.MODULE.NOTIFY"
 
-#define Device_Type @"BP5S"
+#define kMAC_KEY        @"mac"
+#define kACTION_KEY     @"action"
+#define kTYPE_KEY     @"type"
+
+#define kTYPE_BP5S     @"BP5S"
 
 @interface BP5SModule ()
 @property (nonatomic, assign) BOOL isMeasuring;
@@ -77,7 +81,7 @@ RCT_EXPORT_METHOD(getAllConnectedDevices){
         
     }
     
-    NSDictionary* deviceInfo = @{@"action":@"ACTION_GET_ALL_CONNECTED_DEVICES",@"devices":deviceMacArray};
+    NSDictionary* deviceInfo = @{kACTION_KEY:@"action_get_all_connected_devices",@"devices":deviceMacArray};
     
     [self.bridge.eventDispatcher sendDeviceEventWithName:EVENT_NOTIFY body:deviceInfo];
     
@@ -93,24 +97,26 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
         [[self getDeviceWithMac:mac] commandStartMeasureWithZeroingState:^(BOOL isComplete) {
             weakSelf.isMeasuring = YES;
             NSDictionary* response = @{
-                                       @"mac":mac,
+							kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:isComplete ? kACTION_ZOREING_BP : kACTION_ZOREOVER_BP,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } pressure:^(NSArray *pressureArr) {
             weakSelf.isMeasuring = YES;
-            NSLog(@"pressure %@",pressureArr);
+            
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PRESSURE_BP,
                                        kBLOOD_PRESSURE_BP:pressureArr.firstObject,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } waveletWithHeartbeat:^(NSArray *waveletArr) {
             weakSelf.isMeasuring = YES;
-            NSLog(@"xiaoboWithHeart %@",waveletArr);
+
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PULSEWAVE_BP,
                                        kFLAG_HEARTBEAT_BP:@(1),
                                        kPULSEWAVE_BP:waveletArr
@@ -118,9 +124,10 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } waveletWithoutHeartbeat:^(NSArray *waveletArr) {
             weakSelf.isMeasuring = YES;
-            NSLog(@"xiaoboNoHeart %@",waveletArr);
+
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_PULSEWAVE_BP,
                                        kFLAG_HEARTBEAT_BP:@(0),
                                        kPULSEWAVE_BP:waveletArr
@@ -128,15 +135,17 @@ RCT_EXPORT_METHOD(startMeasure:(nonnull NSString *)mac){
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } result:^(NSDictionary *resultDict) {
             weakSelf.isMeasuring = NO;
-            NSLog(@"result %@",resultDict);
+	
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_ONLINE_RESULT_BP,
                                        kHIGH_BLOOD_PRESSURE_BP:resultDict[@"sys"],
                                        kLOW_BLOOD_PRESSURE_BP:resultDict[@"dia"],
                                        kPULSE_BP:resultDict[@"heartRate"],
                                        kMEASUREMENT_AHR_BP:resultDict[@"irregular"],
                                        kDATAID:resultDict[@"dataID"],
+																			 kMEASUREMENT_HSD_BP:resultDict[@"hsdValue"],
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } errorBlock:^(BPDeviceError error) {
@@ -165,7 +174,8 @@ RCT_EXPORT_METHOD(stopMeasure:(nonnull NSString *)mac){
             
             weakSelf.isMeasuring = NO;
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_INTERRUPTED_BP,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
@@ -194,8 +204,9 @@ RCT_EXPORT_METHOD(deleteData:(nonnull NSString *)mac){
         __weak typeof(self) weakSelf = self;
         [[self getDeviceWithMac:mac] commandDeleteDataSuccessBlock:^{
             NSDictionary* response = @{
-                                       @"mac":mac,
-                                       kACTION:kACTION_Delete_BP,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
+                                       kACTION:kACTION_Delete_BP5S,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } errorBlock:^(BPDeviceError error) {
@@ -208,7 +219,7 @@ RCT_EXPORT_METHOD(deleteData:(nonnull NSString *)mac){
     }
 }
 
-//设置离线功能
+//set offline
 RCT_EXPORT_METHOD(enbleOffline:(nonnull NSString *)mac mode:(nonnull NSNumber *)mode){
     
     if ([self getDeviceWithMac:mac]!=nil) {
@@ -227,13 +238,15 @@ RCT_EXPORT_METHOD(enbleOffline:(nonnull NSString *)mac mode:(nonnull NSNumber *)
             
             if (flag == YES) {
                 NSDictionary* response = @{
-                                           @"mac":mac,
+                                           kMAC_KEY:mac,
+																					 kTYPE_KEY:kTYPE_BP5S,
                                            kACTION:kACTION_ENABLE_OFFLINE_BP,
                                            };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
             }else{
                 NSDictionary* response = @{
-                                           @"mac":mac,
+                                           kMAC_KEY:mac,
+																					 kTYPE_KEY:kTYPE_BP5S,
                                            kACTION:kACTION_DISENABLE_OFFLINE_BP,
                                            };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
@@ -249,7 +262,7 @@ RCT_EXPORT_METHOD(enbleOffline:(nonnull NSString *)mac mode:(nonnull NSNumber *)
 }
 
 
-//查电量
+//get battery
 RCT_EXPORT_METHOD(getBattery:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
@@ -257,9 +270,11 @@ RCT_EXPORT_METHOD(getBattery:(nonnull NSString *)mac){
 			
 			[[self getDeviceWithMac:mac] commandEnergy:^(NSNumber *energyValue) {
 				NSDictionary* response = @{
-																	 @"mac":mac,
+																	 kMAC_KEY:mac,
+																	 kTYPE_KEY:kTYPE_BP5S,
 																	 kACTION:kACTION_BATTERY_BP,
-																	 kBATTERY_BP:energyValue
+																	 kBATTERY_BP:energyValue,
+																	 @"batteryStatus":@1
 																	 };
 				[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
 			} energyState:^(NSNumber *energyState) {
@@ -276,7 +291,7 @@ RCT_EXPORT_METHOD(getBattery:(nonnull NSString *)mac){
     }
 }
 
-//查数据数量
+//get history number
 RCT_EXPORT_METHOD(getOffLineNum:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
@@ -284,7 +299,8 @@ RCT_EXPORT_METHOD(getOffLineNum:(nonnull NSString *)mac){
         [[self getDeviceWithMac:mac]commandTransferMemoryTotalCount:^(NSNumber *num) {
             
             NSDictionary* response = @{
-                                       @"mac":mac,
+                                       kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
                                        kACTION:kACTION_HISTORICAL_NUM_BP,
                                        kHISTORICAL_NUM_BP:num
                                        };
@@ -302,7 +318,7 @@ RCT_EXPORT_METHOD(getOffLineNum:(nonnull NSString *)mac){
 }
 
 
-//查离线数据
+//get history data
 RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
@@ -310,9 +326,13 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
         
         [[self getDeviceWithMac:mac] commandTransferMemoryDataWithTotalCount:^(NSNumber *count) {
             if ([count integerValue] == 0) {
-                NSDictionary* response = @{@"mac":mac,kACTION:kACTION_HISTORICAL_DATA_BP };
+                NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_HISTORICAL_DATA_BP };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
-            }
+						}else{
+							
+							NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_GETHISTORY_OVER_BP };
+							[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+						}
         } progress:^(NSNumber *progress) {
             
         } dataArray:^(NSArray *array) {
@@ -324,7 +344,7 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
                 NSNumber *dateNum = [history objectForKey:@"time"];
 
                 NSDate *tempDate = [NSDate dateWithTimeIntervalSince1970:[dateNum integerValue]];                
-                //将时间格式转化成字符串，适配plugin和react native
+               
                 NSDateFormatter *mydateFormatter = [[NSDateFormatter alloc] init];
                 [mydateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 NSString *dateStr = [mydateFormatter stringFromDate:tempDate];
@@ -336,18 +356,24 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
 							NSMutableDictionary *dic=[NSMutableDictionary dictionary];
 							
 							
-							[dic setValue:mac forKey:@"mac"];
-							[dic setValue:dateStr forKey:kMEASUREMENT_DATE_BP];
+							[dic setValue:mac forKey:kMAC_KEY];
+							[dic setValue:dateStr forKey:kMEASUREMENT_TIME_BP];
 							[dic setValue:[history objectForKey:@"dia"] forKey:kLOW_BLOOD_PRESSURE_BP];
 							[dic setValue:[history objectForKey:@"sys"] forKey:kHIGH_BLOOD_PRESSURE_BP];
-							[dic setValue:[history objectForKey:@"irregular"] forKey:kMEASUREMENT_AHR_BP];
+							[dic setValue:[history objectForKey:@"irregular"] forKey:kMEASUREMENT_IHB_BP5S];
 							[dic setValue:[history objectForKey:@"heartRate"] forKey:kPULSE_BP];
 							[dic setValue:[history objectForKey:@"dataID"] forKey:kDATAID];
+							
+							[dic setValue:@0 forKey:@"body_movement"];
+									
 							
 							
 							if (bpHSD!=nil) {
 							
-								[dic setValue:history[@"hsdValue"] forKey:kMEASUREMENT_HSD_BP];
+								[dic setValue:history[@"hsdValue"] forKey:kMEASUREMENT_HSD_BP5S];
+							}else{
+								
+								[dic setValue:@0 forKey:kMEASUREMENT_HSD_BP5S];
 							}
 							
 							if (isRightTime!=nil) {
@@ -359,7 +385,8 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
             
             if (tempArr.count > 0) {
                 NSDictionary* response = @{
-                                           @"mac":mac,
+                                           kMAC_KEY:mac,
+																					 kTYPE_KEY:kTYPE_BP5S,
                                            kACTION:kACTION_HISTORICAL_DATA_BP,
                                            kHISTORICAL_DATA_BP:[tempArr copy]
                                            };
@@ -378,41 +405,76 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
     
 }
 
-//查询功能
+//function
 RCT_EXPORT_METHOD(getFunctionInfo:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
         __weak typeof(self) weakSelf = self;
         [[self getDeviceWithMac:mac] commandFunction:^(NSDictionary *dic) {
+
 					
 					if ([dic objectForKey:@"deviceSysTime"]!=nil && [dic objectForKey:@"deviceTime"]!=nil) {
 						
 						NSDictionary* response = @{
-																			 @"mac":mac,
+																			 kMAC_KEY:mac,
+																			 kTYPE_KEY:kTYPE_BP5S,
 																			 kACTION:kACTION_FUNCTION_INFORMATION_BP,
 																			 kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
 																			 kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
-																			 kFUNCTION_HAVE_ANGLE_SENSOR: [dic objectForKey:@"haveAngleSensor"],
 																			 kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
 																			 kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
-																			 kFUNCTION_IS_MULTI_UPLOAD: [dic objectForKey:@"mutableUpload"],
-																			 kFUNCTION_HAVE_SELF_UPDATE: [dic objectForKey: @"selfUpdate"],
 																			 kFUNCTION_DEVICE_TIME: [dic objectForKey: @"deviceTime"],
-																			 kFUNCTION_DEVICE_SYSTIME: [dic objectForKey: @"deviceSysTime"]};
+																			 kFUNCTION_DEVICE_SYSTIME: [dic objectForKey: @"deviceSysTime"],
+																			 @"function_max_memory_capacity": [dic objectForKey: @"maxHistoryCount"],
+						                           @"function_have_power_off": [dic objectForKey: @"havePowerOff"],
+																			 @"function_reconnect_open": [dic objectForKey: @"autoConnect"],
+																			 @"function_have_show_unit_setting": [dic objectForKey: @"hasUnitSetting"],
+																			 @"function_show_unit": [dic objectForKey: @"unitKPa"],
+																			 @"function_have_body_movement": [dic objectForKey: @"hasMoveDetect"],
+																			 @"function_user_can_delete_memory": [dic objectForKey: @"haveClearMemory"],
+																			 @"function_have_measure_offline": [dic objectForKey: @"offlineMeasureFlg"],
+																			 @"function_measure_offline_open": [dic objectForKey: @"offlineSetingFlg"],
+																			 @"function_bluetooth_open_mode": [dic objectForKey: @"btfunctionFlg"],
+																			 @"function_limbs_Simultaneous_MeasureFlg": [dic objectForKey: @"autoLoopMeasureModel"],
+																			 @"function_have_reconnect_setting": [dic objectForKey: @"reConnectSwitch"],
+																			 @"function_if_abi_machine": @0,
+																			 kFUNCTION_HAVE_ANGLE_SENSOR:[dic objectForKey: @"haveAngleSensor"],
+																			 @"function_memory_group": @1,
+																			 @"function_lower_or_upper_machine":@0,
+																			 @"function_right_or_left_limb_machine":@0,
+																			 @"function_operating_state":@0,
+																			 };
 						[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
 						
 					}else{
 						
 						NSDictionary* response = @{
-																			 @"mac":mac,
-																			 kACTION:kACTION_FUNCTION_INFORMATION_BP,
-																			 kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
-																			 kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
-																			 kFUNCTION_HAVE_ANGLE_SENSOR: [dic objectForKey:@"haveAngleSensor"],
-																			 kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
-																			 kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
-																			 kFUNCTION_IS_MULTI_UPLOAD: [dic objectForKey:@"mutableUpload"],
-																			 kFUNCTION_HAVE_SELF_UPDATE: [dic objectForKey: @"selfUpdate"]};
+							kMAC_KEY:mac,
+							kTYPE_KEY:kTYPE_BP5S,
+							kACTION:kACTION_FUNCTION_INFORMATION_BP,
+							kFUNCTION_IS_UPAIR_MEASURE: [dic objectForKey:@"upAirMeasureFlg"],
+							kFUNCTION_IS_ARM_MEASURE: [dic objectForKey:@"armMeasureFlg"],
+							kFUNCTION_HAVE_OFFLINE: [dic objectForKey:@"haveOffline"],
+							kFUNCTION_HAVE_HSD: [dic objectForKey:@"haveHSD"],
+							@"function_max_memory_capacity": [dic objectForKey: @"maxHistoryCount"],
+							@"function_have_power_off": [dic objectForKey: @"havePowerOff"],
+							@"function_reconnect_open": [dic objectForKey: @"autoConnect"],
+							@"function_have_show_unit_setting": [dic objectForKey: @"hasUnitSetting"],
+							@"function_show_unit": [dic objectForKey: @"unitKPa"],
+							@"function_have_body_movement": [dic objectForKey: @"hasMoveDetect"],
+							@"function_user_can_delete_memory": [dic objectForKey: @"haveClearMemory"],
+							@"function_have_measure_offline": [dic objectForKey: @"offlineMeasureFlg"],
+							@"function_measure_offline_open": [dic objectForKey: @"offlineSetingFlg"],
+							@"function_bluetooth_open_mode": [dic objectForKey: @"btfunctionFlg"],
+							@"function_limbs_Simultaneous_MeasureFlg": [dic objectForKey: @"autoLoopMeasureModel"],
+							@"function_have_reconnect_setting": [dic objectForKey: @"reConnectSwitch"],
+							@"function_if_abi_machine": @0,
+							kFUNCTION_HAVE_ANGLE_SENSOR:[dic objectForKey: @"haveAngleSensor"],
+							@"function_memory_group": @1,
+							@"function_lower_or_upper_machine":@0,
+							@"function_right_or_left_limb_machine":@0,
+							@"function_operating_state":@0,
+						};
 						[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
 						
 						
@@ -431,7 +493,7 @@ RCT_EXPORT_METHOD(getFunctionInfo:(nonnull NSString *)mac){
     }
 }
 
-//离线数据
+//disconnect
 RCT_EXPORT_METHOD(disconnect:(nonnull NSString *)mac){
     
     if ([self getDeviceWithMac:mac]!=nil) {
@@ -453,7 +515,7 @@ RCT_EXPORT_METHOD(getHardwareVersion:(nonnull NSString *)mac){
             NSDictionary* response = @{
                 kACTION:kACTION_GET_HARDWARE_VERSION,
                 kHARDWARE_VERSION: device.hardwareVersion,
-                kType:Device_Type,
+								kTYPE_KEY:kTYPE_BP5S,
                 kMAC:mac
             };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
@@ -461,7 +523,7 @@ RCT_EXPORT_METHOD(getHardwareVersion:(nonnull NSString *)mac){
        
     }else{
         
-        [BPProfileModule sendErrorToBridge:self.bridge eventNotify:EVENT_NOTIFY WithCode:BPDidDisconnect mac:mac type:Device_Type];
+        [BPProfileModule sendErrorToBridge:self.bridge eventNotify:EVENT_NOTIFY WithCode:BPDidDisconnect mac:mac type:kTYPE_BP5S];
         
     }
     

@@ -108,6 +108,14 @@
 #define kMAC @"mac"
 #define kType @"type"
 
+#define kMEASUREMENT_HSD_BP5S @"flag_hsd_status"
+
+#define kMEASUREMENT_IHB_BP5S @"flag_have_ihb"
+
+#define kACTION_Delete_BP5S @"action_delete_all_memory_success"
+
+
+
 
 + (void)sendErrorToBridge:(RCTBridge *)bridge eventNotify:(NSString*)eventNotify WithCode:(NSInteger)errorCode;
 + (void)sendEventToBridge:(RCTBridge *)bridge eventNotify:(NSString*)eventNotify WithDict:(NSDictionary*)dict;
