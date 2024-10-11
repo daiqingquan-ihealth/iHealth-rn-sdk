@@ -106,7 +106,13 @@ RCT_EXPORT_MODULE()
 						 
 						 @"FUNCTION_DEVICE_SYSTIME":kFUNCTION_DEVICE_SYSTIME,
 						 
-						 @"TIME_RIGHT":kTIME_Right
+						 @"TIME_RIGHT":kTIME_Right,
+						 
+						 @"MEASUREMENT_HSD_BP5S":kMEASUREMENT_HSD_BP5S,
+						 
+						 @"MEASUREMENT_IHB_BP5S":kMEASUREMENT_IHB_BP5S,
+						 
+						 @"ACTION_Delete_BP5S":kACTION_Delete_BP5S
              };
 }
 + (BOOL)requiresMainQueueSetup
