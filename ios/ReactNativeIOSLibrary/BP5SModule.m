@@ -245,7 +245,7 @@ RCT_EXPORT_METHOD(enbleOffline:(nonnull NSString *)mac mode:(nonnull NSNumber *)
                 NSDictionary* response = @{
                                            kMAC_KEY:mac,
 																					 kTYPE_KEY:kTYPE_BP5S,
-                                           kACTION:kACTION_Set_Mode,
+                                           kACTION:kACTION_SET_MODE,
                                            };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
             
