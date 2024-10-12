@@ -242,21 +242,12 @@ RCT_EXPORT_METHOD(enbleOffline:(nonnull NSString *)mac mode:(nonnull NSNumber *)
         
         [[self getDeviceWithMac:mac] commandSetOffline:flag success:^{
             
-            if (flag == YES) {
                 NSDictionary* response = @{
                                            kMAC_KEY:mac,
 																					 kTYPE_KEY:kTYPE_BP5S,
-                                           kACTION:kACTION_ENABLE_OFFLINE_BP,
+                                           kACTION:kACTION_Set_Mode,
                                            };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
-            }else{
-                NSDictionary* response = @{
-                                           kMAC_KEY:mac,
-																					 kTYPE_KEY:kTYPE_BP5S,
-                                           kACTION:kACTION_DISENABLE_OFFLINE_BP,
-                                           };
-                [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
-            }
             
         } error:^(BPDeviceError error) {
             success = NO;

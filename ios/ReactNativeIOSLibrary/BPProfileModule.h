@@ -114,6 +114,7 @@
 
 #define kACTION_Delete_BP5S @"action_delete_all_memory_success"
 
+#define kACTION_Set_Mode @"action_set_mode"
 
 
 
