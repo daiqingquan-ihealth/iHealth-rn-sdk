@@ -94,6 +94,8 @@ public class BPProfileModule extends ReactContextBaseJavaModule {
     private static final String ACTION_SHOW_CONFIG_BP = "ACTION_SHOW_CONFIG_BP";
     private static final String IS_BACKLIGHT_ON_BP = "IS_BACKLIGHT_ON_BP";
     private static final String IS_CLOCK_ON_BP = "IS_CLOCK_ON_BP";
+    private static final String ACTION_SET_MODE = "ACTION_SET_MODE";
+    private static final String ACTION_DELETE_ALL_MEMORY_SUCCESS = "ACTION_DELETE_ALL_MEMORY_SUCCESS";
 
     public BPProfileModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -179,6 +181,8 @@ public class BPProfileModule extends ReactContextBaseJavaModule {
         constants.put(ACTION_SHOW_CONFIG_BP, BpProfile.ACTION_SHOW_CONFIG_BP);
         constants.put(IS_BACKLIGHT_ON_BP, BpProfile.IS_BACKLIGHT_ON_BP);
         constants.put(IS_CLOCK_ON_BP, BpProfile.IS_CLOCK_ON_BP);
+        constants.put(ACTION_SET_MODE, BpProfile.ACTION_SET_MODE);
+        constants.put(ACTION_DELETE_ALL_MEMORY_SUCCESS, BpProfile.ACTION_DELETE_ALL_MEMORY_SUCCESS);
 
         return constants;
     }
