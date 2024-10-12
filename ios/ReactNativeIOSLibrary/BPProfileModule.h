@@ -112,9 +112,9 @@
 
 #define kMEASUREMENT_IHB_BP5S @"flag_have_ihb"
 
-#define kACTION_Delete_BP5S @"action_delete_all_memory_success"
+#define kACTION_DELETE_ALL_MEMORY_SUCCESS @"action_delete_all_memory_success"
 
-#define kACTION_Set_Mode @"action_set_mode"
+#define kACTION_SET_MODE @"action_set_mode"
 
 
 

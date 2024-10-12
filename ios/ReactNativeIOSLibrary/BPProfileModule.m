@@ -112,9 +112,9 @@ RCT_EXPORT_MODULE()
 						 
 						 @"MEASUREMENT_IHB_BP5S":kMEASUREMENT_IHB_BP5S,
 						 
-						 @"ACTION_Delete_BP5S":kACTION_Delete_BP5S,
+						 @"ACTION_DELETE_ALL_MEMORY_SUCCESS":kACTION_DELETE_ALL_MEMORY_SUCCESS,
 						 
-						 @"ACTION_Set_Mode":kACTION_Set_Mode
+						 @"ACTION_SET_MODE":kACTION_SET_MODE
              };
 }
 + (BOOL)requiresMainQueueSetup
