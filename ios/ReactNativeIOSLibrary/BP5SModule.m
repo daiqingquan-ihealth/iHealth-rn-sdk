@@ -332,9 +332,12 @@ RCT_EXPORT_METHOD(getOffLineData:(nonnull NSString *)mac){
         
         [[self getDeviceWithMac:mac] commandTransferMemoryDataWithTotalCount:^(NSNumber *count) {
 					
-					NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_HISTORICAL_DATA_BP };
-					[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+					
             if ([count integerValue] == 0) {
+							
+							NSDictionary* response = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_HISTORICAL_DATA_BP };
+							[BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+							
                 NSDictionary* response1 = @{kMAC_KEY:mac,kTYPE_KEY:kTYPE_BP5S,kACTION:kACTION_GETHISTORY_OVER_BP };
                 [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response1];
 						}
