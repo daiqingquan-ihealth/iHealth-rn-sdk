@@ -24,6 +24,8 @@
 		23339DBB2B3D183E003073BE /* HS2SProModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 23339DB72B3D183E003073BE /* HS2SProModule.m */; };
 		23339DBC2B3D183E003073BE /* HS2SProProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 23339DBA2B3D183E003073BE /* HS2SProProfileModule.m */; };
 		234538E22CA8EEA000CD586E /* iHealthSDK2.13.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 234538E12CA8EEA000CD586E /* iHealthSDK2.13.0.a */; };
+		23A806B32CD0CED50016CC72 /* BG1AModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A806B02CD0CED50016CC72 /* BG1AModule.m */; };
+		23A806B42CD0CED50016CC72 /* BG1AProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A806B22CD0CED50016CC72 /* BG1AProfileModule.m */; };
 		3F31C42B21ABE80400811B02 /* HS2Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F31C42A21ABE80400811B02 /* HS2Module.m */; };
 		4565653F26E0BDE7007DA850 /* AM5Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 4565653D26E0BDE6007DA850 /* AM5Module.m */; };
 		4565654026E0BDE7007DA850 /* AM5ProfileModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4565653E26E0BDE7007DA850 /* AM5ProfileModule.m */; };
@@ -263,6 +265,10 @@
 		234538DE2CA8EEA000CD586E /* TS28BController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TS28BController.h; sourceTree = "<group>"; };
 		234538DF2CA8EEA000CD586E /* TS28BHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TS28BHeader.h; sourceTree = "<group>"; };
 		234538E12CA8EEA000CD586E /* iHealthSDK2.13.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = iHealthSDK2.13.0.a; sourceTree = "<group>"; };
+		23A806AF2CD0CED50016CC72 /* BG1AModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BG1AModule.h; sourceTree = "<group>"; };
+		23A806B02CD0CED50016CC72 /* BG1AModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BG1AModule.m; sourceTree = "<group>"; };
+		23A806B12CD0CED50016CC72 /* BG1AProfileModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BG1AProfileModule.h; sourceTree = "<group>"; };
+		23A806B22CD0CED50016CC72 /* BG1AProfileModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BG1AProfileModule.m; sourceTree = "<group>"; };
 		3F31C42921ABE80400811B02 /* HS2Module.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HS2Module.h; sourceTree = "<group>"; };
 		3F31C42A21ABE80400811B02 /* HS2Module.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HS2Module.m; sourceTree = "<group>"; };
 		4565653B26E0BDE6007DA850 /* AM5Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AM5Module.h; sourceTree = "<group>"; };
@@ -378,6 +384,10 @@
 				CE60549F25482CC80059E83A /* BG1SModule.m */,
 				CE6054A925482CC80059E83A /* BG1SProfileModule.h */,
 				CE6054AA25482CC80059E83A /* BG1SProfileModule.m */,
+				23A806AF2CD0CED50016CC72 /* BG1AModule.h */,
+				23A806B02CD0CED50016CC72 /* BG1AModule.m */,
+				23A806B12CD0CED50016CC72 /* BG1AProfileModule.h */,
+				23A806B22CD0CED50016CC72 /* BG1AProfileModule.m */,
 				CE6054AC25482CC90059E83A /* BG5SModule.h */,
 				CE60549C25482CC70059E83A /* BG5SModule.m */,
 				CE6054AD25482CC90059E83A /* BG5SProfileModule.h */,
@@ -713,6 +723,8 @@
 				CE6054B125482CC90059E83A /* BP5SModule.m in Sources */,
 				3F31C42B21ABE80400811B02 /* HS2Module.m in Sources */,
 				CE6054B725482CC90059E83A /* NT13BModule.m in Sources */,
+				23A806B32CD0CED50016CC72 /* BG1AModule.m in Sources */,
+				23A806B42CD0CED50016CC72 /* BG1AProfileModule.m in Sources */,
 				187510221DE5E399005E66B1 /* BP550BTModule.m in Sources */,
 				CE6054C025482E590059E83A /* PO1Module.m in Sources */,
 				CEEE2D0E2548F6E4007AC7E4 /* PT3SBTModule.m in Sources */,
