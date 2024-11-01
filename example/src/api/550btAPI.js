@@ -11,6 +11,7 @@ export default {
     getDisplayConfig:  (mac) => BP550BTModule.getDisplayConfig(mac),
     getTime:          (mac) => BP550BTModule.getTime(mac),
     transferFinished: (mac) => BP550BTModule.transferFinished(mac),
-    disconnect:       (mac) => BP550BTModule.disconnect(mac)
+    disconnect:       (mac) => BP550BTModule.disconnect(mac),
+    getFirmVersion:    (mac) => BP550BTModule.getFirmVersion(mac)
   }
 }

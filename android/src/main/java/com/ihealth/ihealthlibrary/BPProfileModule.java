@@ -50,6 +50,9 @@ public class BPProfileModule extends ReactContextBaseJavaModule {
     private static final String ACTION_HISTORICAL_NUM_BP = "ACTION_HISTORICAL_NUM_BP";
     private static final String HISTORICAL_NUM_BP = "HISTORICAL_NUM_BP";
 
+    private static final String ACTION_GET_FIRMWARE_VERSION = "ACTION_GET_FIRMWARE_VERSION";
+    private static final String FIRMWARE_VERSION = "FIRMWARE_VERSION";
+
 
     private static final String ACTION_HISTORICAL_DATA_BP = "ACTION_HISTORICAL_DATA_BP";
     private static final String HISTORICAL_DATA_BP = "HISTORICAL_DATA_BP";

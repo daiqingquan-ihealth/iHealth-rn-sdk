@@ -42,7 +42,8 @@
 
 #define kACTION_GETHISTORY_OVER_BP @"get_historical_over_bp"
 
-
+#define kACTION_GET_FIRMWARE_VERSION @"action_get_firmwareVersion"
+#define kFIRMWARE_VERSION @"firmwareVersion"
 
 #define kMessage @"Message"
 #define kIDPS @"idps"

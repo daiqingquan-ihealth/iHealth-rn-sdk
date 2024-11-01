@@ -116,9 +116,31 @@ RCT_EXPORT_METHOD(getAllConnectedDevices){
 }
 
 
-
-
 #pragma mark - Method
+
+RCT_EXPORT_METHOD(getFirmVersion:(nonnull NSString *)mac){
+    
+    if ([self getDeviceWithMac:mac]!=nil) {
+        __weak typeof(self) weakSelf = self;
+       
+        KN550BT*device=[self getDeviceWithMac:mac];
+            NSDictionary* response = @{
+                kACTION:kACTION_GET_FIRMWARE_VERSION,
+                kFIRMWARE_VERSION: device.firmwareVersion,
+                kType:Device_Type,
+                kMAC:mac
+            };
+            [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
+            
+       
+    }else{
+        
+        [BPProfileModule sendErrorToBridge:self.bridge eventNotify:EVENT_NOTIFY WithCode:BPDidDisconnect mac:mac type:Device_Type];
+        
+    }
+    
+    
+}
 
 RCT_EXPORT_METHOD(getFunctionInfo:(nonnull NSString *)mac){
     

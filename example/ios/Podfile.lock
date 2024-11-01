@@ -375,8 +375,8 @@ PODS:
     - React-jsi (= 0.71.3)
     - React-logger (= 0.71.3)
     - React-perflogger (= 0.71.3)
-  - ReactNativeIOSLibrary (1.0.0):
-    - React
+  - rn-ihealth (1.7.0):
+    - React-Core
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
@@ -427,7 +427,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "ReactNativeIOSLibrary (from `../node_modules/@ihealth/ihealthlibrary-react-native`)"
+  - "rn-ihealth (from `../node_modules/@ihealth/ihealthlibrary-react-native`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -521,7 +521,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  ReactNativeIOSLibrary:
+  rn-ihealth:
     :path: "../node_modules/@ihealth/ihealthlibrary-react-native"
   RNScreens:
     :path: "../node_modules/react-native-screens"
@@ -573,10 +573,10 @@ SPEC CHECKSUMS:
   React-RCTVibration: 5199a180d04873366a83855de55ac33ce60fe4d5
   React-runtimeexecutor: 7bf0dafc7b727d93c8cb94eb00a9d3753c446c3e
   ReactCommon: 6f65ea5b7d84deb9e386f670dd11ce499ded7b40
-  ReactNativeIOSLibrary: 63075740e9a612473fa6e76d4e379fc9f16a6999
+  rn-ihealth: caae9455a0c8f33a2d02fea9064a748609244f2a
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   Yoga: 5ed1699acbba8863755998a4245daa200ff3817b
 
 PODFILE CHECKSUM: 3bb1c9b14e5dd99da1669534b68ea6909aee96f2
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.14.3

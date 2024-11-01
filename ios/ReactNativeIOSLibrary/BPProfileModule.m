@@ -93,6 +93,11 @@ RCT_EXPORT_MODULE()
              @"ACTION_GETHISTORY_OVER_BP":kACTION_GETHISTORY_OVER_BP,
 
              @"ACTION_GET_ALL_CONNECTED_DEVICES":@"ACTION_GET_ALL_CONNECTED_DEVICES",
+             
+             @"ACTION_GET_FIRMWARE_VERSION":kACTION_GET_FIRMWARE_VERSION,
+             
+             @"FIRMWARE_VERSION":kFIRMWARE_VERSION,
+             
              };
 }
 + (BOOL)requiresMainQueueSetup

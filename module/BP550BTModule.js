@@ -29,6 +29,19 @@ module.exports = {
 
   },
 
+ /**
+   * Get the BP550BT device's firmwareVersion.
+   * @param {string} mac Device's mac address
+   */
+  getFirmVersion: function (mac) {
+    if (RCTModule != null) {
+      RCTModule.getFirmVersion(mac);
+    }else {
+      console.log('~~~~~ RCTModule is null')
+    }
+
+  },
+
   /**
    * get offline data number.
    * @param {string} mac Device's mac address

@@ -11,6 +11,10 @@ import com.facebook.react.module.annotations.ReactModule;
 import com.ihealth.communication.control.Bp550BTControl;
 import com.ihealth.communication.control.BpProfile;
 import com.ihealth.communication.manager.iHealthDevicesManager;
+import com.ihealth.communication.manager.iHealthDevicesIDPS;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +46,35 @@ public class BP550BTModule extends iHealthBaseModule {
         return map;
     }
 
+    @ReactMethod
+    public void getFirmVersion(String mac) {
+        Bp550BTControl bp550BTControl = iHealthDevicesManager.getInstance().getBp550BTControl(mac);
+
+        if (bp550BTControl != null) {
+
+     try {
+               
+             String idps = bp550BTControl.getIdps();
+            JSONObject jsonObj = new JSONObject(idps);
+            String firmwareVersion = jsonObj.getString(iHealthDevicesIDPS.FIRMWAREVERSION);
+            WritableMap params = Arguments.createMap();
+            params.putString("action","action_get_firmwareVersion");
+            params.putString("mac", mac);
+            params.putString("type", "KN550");
+            params.putString("firmwareVersion",firmwareVersion);
+            
+            sendEvent(EVENT_NOTIFY, params);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+           
+        } else {
+            WritableMap params = Arguments.createMap();
+            params.putInt("errorid", 400);
+            sendEvent("Error", params);
+        }
+    }
     @ReactMethod
     public void getBattery(String mac) {
         Bp550BTControl bp550BTControl = iHealthDevicesManager.getInstance().getBp550BTControl(mac);
