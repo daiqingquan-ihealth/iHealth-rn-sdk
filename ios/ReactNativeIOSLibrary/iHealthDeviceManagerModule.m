@@ -1145,7 +1145,7 @@ RCT_EXPORT_METHOD(connectDevice:(nonnull NSString *)mac type:(nonnull NSString *
         
     }else if ([deviceType isEqualToString:kType_PT3SBT]){
         
-        [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_PO1 andSerialNub:mac];
+        [[ConnectDeviceController commandGetInstance] commandContectDeviceWithDeviceType:HealthDeviceType_PT3SBT andSerialNub:mac];
         
     }else if ([deviceType isEqualToString:kType_BG1A]){
         

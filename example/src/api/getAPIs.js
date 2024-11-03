@@ -1,22 +1,24 @@
 import bt550API from './550btAPI'
-import bg1aAPI  from './bg1aAPI'
-import am6API   from './am6API'
-import bg5sAPI   from './bg5sAPI'
-import hs2sAPI   from './hs2sAPI'
-import hs2sProAPI   from './hs2sProAPI'
-import { 
+import bg1aAPI from './bg1aAPI'
+import am6API from './am6API'
+import bg5sAPI from './bg5sAPI'
+import hs2sAPI from './hs2sAPI'
+import hs2sProAPI from './hs2sProAPI'
+import bp5sAPI from './bp5sAPI'
+import {
   BG1AModule,
   BP550BTModule,
   AM6Module,
   BG5SModule,
   HS2SModule,
-  HS2SProModule
- } from '@ihealth/ihealthlibrary-react-native'
+  HS2SProModule,
+  BP5SModule
+} from '@ihealth/ihealthlibrary-react-native'
 
 export default {
 
   getDeviceNotify: (type) => {
-    switch(type) {
+    switch (type) {
       case 'KN550':
         return BP550BTModule.Event_Notify
 
@@ -25,7 +27,7 @@ export default {
 
       case 'AM6':
         return AM6Module.Event_Notify
-        
+
       case 'BG5S':
         return BG5SModule.Event_Notify
 
@@ -34,11 +36,14 @@ export default {
 
       case 'HS2S Pro':
         return HS2SProModule.Event_Notify
+
+      case 'BP5S':
+        return BP5SModule.Event_Notify
     }
   },
 
   getDeviceAPI: (type) => {
-    switch(type) {
+    switch (type) {
       case 'KN550':
         return bt550API
 
@@ -47,7 +52,7 @@ export default {
 
       case 'AM6':
         return am6API
-      
+
       case 'BG5S':
         return bg5sAPI
 
@@ -56,7 +61,10 @@ export default {
 
       case 'HS2S Pro':
         return hs2sProAPI
-            
+
+      case 'BP5S':
+        return bp5sAPI
+
     }
   }
 }

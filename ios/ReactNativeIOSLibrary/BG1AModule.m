@@ -42,7 +42,7 @@ RCT_EXPORT_MODULE()
         
         
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleStripStatusNoti:) name:kBG1ANotiNameStripStatus object:nil];
-        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleResultNoti:) name:kBG1ANotiNameResult object:nil];
+        [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleResultNoti:) name:@"kBG1ANotiNameResult_Internal" object:nil];
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleErrorNoti:) name:kBG1ANotiNameError object:nil];
         
     }
@@ -123,15 +123,28 @@ RCT_EXPORT_MODULE()
     NSLog(@"%@",noti);
     NSNumber *num = noti.userInfo[@"result"];
     NSString *tempMac = noti.userInfo[@"mac"];
-    
-    if(num!=nil && tempMac!=nil){
+    NSDictionary*dic=noti.userInfo[@"detailData"];
+    if(num!=nil && tempMac!=nil && dic!=nil){
         
         [self.bridge.eventDispatcher sendDeviceEventWithName:BG1A_EVENT_NOTIFY body:@{
             BG1A_ACTION:ACTION_MEASURE_RESULT,
             BG1A_KEY_MAC:tempMac,
             BG1A_TYPE:DEVICE_TYPE,
             MEASURE_RESULT:num,
-            
+            BG1A_RESULT_KEY_BATTERY_VOLTAGE:[dic valueForKey:@"batteryVoltage"],
+            BG1A_RESULT_KEY_I0:[dic valueForKey:@"current0"],
+            BG1A_RESULT_KEY_I1:[dic valueForKey:@"current1"],
+            BG1A_RESULT_KEY_I2:[dic valueForKey:@"current2"],
+            BG1A_RESULT_KEY_I3:[dic valueForKey:@"current3"],
+            BG1A_RESULT_KEY_RESISTANCE:[dic valueForKey:@"impedance"],
+            BG1A_RESULT_KEY_AVG:[dic valueForKey:@"isAvg"],
+            BG1A_RESULT_KEY_CTL:[dic valueForKey:@"isCTL"],
+            BG1A_RESULT_KEY_ERROR_CODE:[dic valueForKey:@"logErrorCode"],
+            BG1A_RESULT_KEY_OPEN:[dic valueForKey:@"open"],
+            BG1A_RESULT_KEY_STRIP_TYPE:[dic valueForKey:@"stripType"],
+            BG1A_RESULT_KEY_TEMPERATURE:[dic valueForKey:@"temperature"],
+            BG1A_RESULT_KEY_UNIT:[dic valueForKey:@"unit"],
+            BG1A_RESULT_KEY_XM:[dic valueForKey:@"xm"],
         }];
     }
     
@@ -322,14 +335,46 @@ RCT_EXPORT_METHOD(getHistoryData:(nonnull NSString *)mac){
                 NSNumber*isResultNeedCalibrate=[history valueForKey:@"isResultNeedCalibrate"];
                 
                 NSDictionary *dic=[NSDictionary dictionary];
+                
+                NSDictionary*detailDic=[history valueForKey:@"detailData"];
+                
+                if (detailDic!=nil) {
+                    dic = @{
+                        BG1A_RESULT_KEY_TIME: dateStr,
+                        MEASURE_RESULT: result,
+                        BG1A_RESULT_KEY_ERRORNUM: errorNum,
+                        BG1A_RESULT_KEY_isResultNeedCalibrate: isResultNeedCalibrate,
+                        BG1A_RESULT_KEY_MODE: mode,
+                        BG1A_RESULT_KEY_BATTERY_VOLTAGE:[detailDic valueForKey:@"batteryVoltage"],
+                        BG1A_RESULT_KEY_I0:[detailDic valueForKey:@"current0"],
+                        BG1A_RESULT_KEY_I1:[detailDic valueForKey:@"current1"],
+                        BG1A_RESULT_KEY_I2:[detailDic valueForKey:@"current2"],
+                        BG1A_RESULT_KEY_I3:[detailDic valueForKey:@"current3"],
+                        BG1A_RESULT_KEY_RESISTANCE:[detailDic valueForKey:@"impedance"],
+                        BG1A_RESULT_KEY_AVG:[detailDic valueForKey:@"isAvg"],
+                        BG1A_RESULT_KEY_CTL:[detailDic valueForKey:@"isCTL"],
+                        BG1A_RESULT_KEY_ERROR_CODE:[detailDic valueForKey:@"logErrorCode"],
+                        BG1A_RESULT_KEY_OPEN:[detailDic valueForKey:@"open"],
+                        BG1A_RESULT_KEY_STRIP_TYPE:[detailDic valueForKey:@"stripType"],
+                        BG1A_RESULT_KEY_TEMPERATURE:[detailDic valueForKey:@"temperature"],
+                        BG1A_RESULT_KEY_UNIT:[detailDic valueForKey:@"unit"],
+                        BG1A_RESULT_KEY_XM:[detailDic valueForKey:@"xm"],
+                    };
+                    
+                }else{
+                    
+                    
+                    dic = @{
+                        BG1A_RESULT_KEY_TIME: dateStr,
+                        MEASURE_RESULT: result,
+                        BG1A_RESULT_KEY_ERRORNUM: errorNum,
+                        BG1A_RESULT_KEY_isResultNeedCalibrate: isResultNeedCalibrate,
+                        BG1A_RESULT_KEY_MODE: mode,
+                    };
+                    
+                }
 
-                dic = @{
-                    BG1A_RESULT_KEY_TIME: dateStr,
-                    MEASURE_RESULT: result,
-                    BG1A_RESULT_KEY_ERRORNUM: errorNum,
-                    BG1A_RESULT_KEY_isResultNeedCalibrate: isResultNeedCalibrate,
-                    BG1A_RESULT_KEY_MODE: mode,
-                };
+                
                 
                 [tempArr addObject:dic];
                 

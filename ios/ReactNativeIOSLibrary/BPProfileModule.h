@@ -77,6 +77,10 @@
 #define kFUNCTION_HAVE_SELF_UPDATE @"selfUpdate"
 #define kFUNCTION_HAVE_HSD @"haveHSD"
 
+
+#define kFUNCTION_DEVICE_TIME @"deviceTime"
+#define kFUNCTION_DEVICE_SYSTIME @"deviceSysTime"
+
 #define kANGLE_BP @"angle"
 
 #define kWHICH_ARM @"which_arm"
@@ -93,10 +97,25 @@
 
 #define kCLOCK_ON_BP @"is_clock_on_bp"
 
+#define kHARDWARE_VERSION @"hardwareVersion"
+
+#define kACTION_GET_HARDWARE_VERSION @"action_get_hardwareVersion"
+
+#define kTIME_Right @"isRightTime"
+
 
 
 #define kMAC @"mac"
 #define kType @"type"
+
+#define kMEASUREMENT_HSD_BP5S @"flag_hsd_status"
+
+#define kMEASUREMENT_IHB_BP5S @"flag_have_ihb"
+
+#define kACTION_DELETE_ALL_MEMORY_SUCCESS @"action_delete_all_memory_success"
+
+#define kACTION_SET_MODE @"action_set_mode"
+
 
 
 + (void)sendErrorToBridge:(RCTBridge *)bridge eventNotify:(NSString*)eventNotify WithCode:(NSInteger)errorCode;

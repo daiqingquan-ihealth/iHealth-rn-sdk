@@ -448,7 +448,7 @@ RCT_EXPORT_METHOD(getMemoryData:(nonnull NSString*)mac :(nonnull NSString*)userI
                         
                          [resultDic setValue:[tempDic valueForKey:@"HS2SMuscleControl"] forKey:HS2S_MUSCLE_CONTROL];
                         
-                         [resultDic setValue:[tempDic valueForKey:@"HS2SProteinPercentAge"] forKey:HS2S_PHYSICAL_AGE];
+                         [resultDic setValue:[tempDic valueForKey:@"HS2SProteinPercentAge"] forKey:HS2S_PROTEIN_RATE];
                         
                         [resultDic setValue:[tempDic valueForKey:@"HS2SVFR"] forKey:HS2S_VISCERAL_FAT_GRADE];
                         
@@ -760,7 +760,7 @@ RCT_EXPORT_METHOD(measure:(nonnull NSString*)mac :(nonnull NSNumber*)userType :(
             
              [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SMuscleControl"] forKey:HS2S_MUSCLE_CONTROL];
             
-             [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SProteinPercentAge"] forKey:HS2S_PHYSICAL_AGE];
+             [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SProteinPercentAge"] forKey:HS2S_PROTEIN_RATE];
             
             [resultDic setValue:[weightAndBodyInfoDic valueForKey:@"HS2SVFR"] forKey:HS2S_VISCERAL_FAT_GRADE];
             

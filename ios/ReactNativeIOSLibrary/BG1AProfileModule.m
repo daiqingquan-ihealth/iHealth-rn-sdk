@@ -68,7 +68,20 @@ RCT_EXPORT_MODULE()
              @"ACTION_ERROR_BG1A"                :ACTION_ERROR_BG1A,
              @"ERROR_NUM_BG1A"                :ERROR_NUM_BG1A,
              @"ERROR_DESCRIPTION_BG1A"                :ERROR_DESCRIPTION_BG1A,
-             
+             @"BG1A_RESULT_KEY_BATTERY_VOLTAGE"       :BG1A_RESULT_KEY_BATTERY_VOLTAGE,
+             @"BG1A_RESULT_KEY_OPEN"                  :BG1A_RESULT_KEY_OPEN,
+             @"BG1A_RESULT_KEY_XM"                    :BG1A_RESULT_KEY_XM,
+             @"BG1A_RESULT_KEY_ERROR_CODE"            :BG1A_RESULT_KEY_ERROR_CODE,
+             @"BG1A_RESULT_KEY_CTL"                   :BG1A_RESULT_KEY_CTL,
+             @"BG1A_RESULT_KEY_AVG"                   :BG1A_RESULT_KEY_AVG,
+             @"BG1A_RESULT_KEY_I0"                    :BG1A_RESULT_KEY_I0,
+             @"BG1A_RESULT_KEY_I1"                    :BG1A_RESULT_KEY_I1,
+             @"BG1A_RESULT_KEY_I2"                    :BG1A_RESULT_KEY_I2,
+             @"BG1A_RESULT_KEY_I3"                    :BG1A_RESULT_KEY_I3,
+             @"BG1A_RESULT_KEY_TEMPERATURE"           :BG1A_RESULT_KEY_TEMPERATURE,
+             @"BG1A_RESULT_KEY_STRIP_TYPE"            :BG1A_RESULT_KEY_STRIP_TYPE,
+             @"BG1A_RESULT_KEY_UNIT"                  :BG1A_RESULT_KEY_UNIT,
+             @"BG1A_RESULT_KEY_RESISTANCE"            :BG1A_RESULT_KEY_RESISTANCE,
              };
 };
 
