@@ -212,7 +212,7 @@ RCT_EXPORT_METHOD(deleteData:(nonnull NSString *)mac){
             NSDictionary* response = @{
                                        kMAC_KEY:mac,
 																			 kTYPE_KEY:kTYPE_BP5S,
-                                       kACTION:kACTION_Delete_BP5S,
+                                       kACTION:kACTION_DELETE_ALL_MEMORY_SUCCESS,
                                        };
             [BPProfileModule sendEventToBridge:weakSelf.bridge eventNotify:EVENT_NOTIFY WithDict:response];
         } errorBlock:^(BPDeviceError error) {
