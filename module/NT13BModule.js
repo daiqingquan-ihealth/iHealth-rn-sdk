@@ -15,6 +15,5 @@ module.exports = {
   Event_Notify: 'event_notify_nt13b',
   getAllConnectedDevices: () => { RCTModule?.getAllConnectedDevices(); },
   measure: measure,
-  stopMeasure: (mac) => { RCTModule?.stopMeasure?.(mac); },
   disconnect: (mac) => { RCTModule?.disconnect(mac); },
 };
