@@ -14,7 +14,8 @@
     "android/proguard-rules.pro",
     "ReactNativeIOSLibrary.podspec",
     "MIGRATION_GUIDE.md",
-    "README.md"
+    "README.md",
+    "example/"
   ],
   "scripts": {
     "test": "node scripts/validate-modules.js",

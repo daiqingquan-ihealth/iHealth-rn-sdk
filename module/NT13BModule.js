@@ -16,7 +16,6 @@ module.exports = {
   getAllConnectedDevices: () => { RCTModule?.getAllConnectedDevices(); },
   getBattery: (mac) => { RCTModule?.getBattery?.(mac); },
   measure: measure,
-  startMeasure: measure,
   stopMeasure: (mac) => { RCTModule?.stopMeasure?.(mac); },
   disconnect: (mac) => { RCTModule?.disconnect(mac); },
 };

@@ -1,0 +1,14 @@
+node_modules/
+.expo/
+dist/
+web-build/
+ios/Pods/
+ios/build/
+ios/DerivedData/
+android/build/
+android/app/build/
+android/.gradle/
+package-lock.json
+*.jsbundle
+*.log
+.DS_Store
