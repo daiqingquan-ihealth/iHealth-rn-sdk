@@ -271,6 +271,7 @@ const emitter = new NativeEventEmitter(NativeModules.BP5SModule); // top-level â
 | `BP5Module` | `NativeModules.BP5Module` |
 | `BP5SModule` | `NativeModules.BP5SModule` |
 | `BP550BTModule` | `NativeModules.BP550BTModule` |
+| `BP550LTModule` | `NativeModules.BP550LTModule` |
 | `BP3LModule` | `NativeModules.BP3LModule` |
 | `BP7Module` | `NativeModules.BP7Module` |
 | `BP7SModule` | `NativeModules.BP7SModule` |
@@ -322,6 +323,7 @@ iHealthDeviceManagerModule.stopDiscovery();
 | `iHealthDeviceManagerModule.BP7S` | `'BP7S'` | BP7S Blood Pressure Monitor |
 | `iHealthDeviceManagerModule.BP3L` | `'BP3L'` | BP3L Blood Pressure Monitor |
 | `iHealthDeviceManagerModule.KN550` | `'KN550'` | KN-550BT Blood Pressure Monitor |
+| `iHealthDeviceManagerModule.KN550LT` | `'KN550LT'` | KN-550LT Blood Pressure Monitor |
 | `iHealthDeviceManagerModule.PO3` | `'PO3'` | PO3 Pulse Oximeter |
 | `iHealthDeviceManagerModule.PO1` | `'PO1'` | PO1 Pulse Oximeter |
 | `iHealthDeviceManagerModule.HS2S` | `'HS2S'` | HS2S Body Scale |
@@ -462,6 +464,37 @@ BP550BTModule.getDisplayConfig(mac);
 BP550BTModule.setDisplayConfig(mac, showSystolic, showDiastolic);
 BP550BTModule.transferFinished(mac);
 BP550BTModule.disconnect(mac);
+```
+
+---
+
+### Blood Pressure Monitor â€” KN-550LT (BP550LTModule)
+
+KN-550LT has no online measurement; results are read back from the device memory.
+Payloads are identical on iOS and Android.
+
+```javascript
+import { BP550LTModule, iHealthDeviceManagerModule } from '@ihealth/ihealthlibrary-react-native';
+
+iHealthDeviceManagerModule.startDiscovery(iHealthDeviceManagerModule.KN550LT);
+iHealthDeviceManagerModule.connectDevice(mac, iHealthDeviceManagerModule.KN550LT);
+
+const emitter = new NativeEventEmitter(NativeModules.BP550LTModule);
+emitter.addListener(BP550LTModule.Event_Notify, (event) => {
+  console.log(event);
+});
+
+BP550LTModule.getAllConnectedDevices(); // { action: 'action_get_all_connected_devices', devices: [...] }
+BP550LTModule.getFirmVersion(mac);      // { action: 'action_get_firmwareVersion', firmwareVersion, hardwareVersion }
+BP550LTModule.getBattery(mac);          // { action: 'battery_bp', battery }
+BP550LTModule.getFunctionInfo(mac);     // { action: 'function_info_bp', haveOffline, memoryGroup, maxMemoryCapacity, ... }
+BP550LTModule.getOffLineNum(mac);       // { action: 'offlinenum', offlinenum }
+BP550LTModule.getOffLineData(mac);      // { action: 'historicaldata_bp', data: [{ time, sys, dia, heartRate,
+                                        //   arrhythmia, body_movement, cuff_loose, time_calibration, dataID }] }
+BP550LTModule.getTime(mac);             // { action: 'action_get_time', date }
+BP550LTModule.transferFinished(mac);    // deletes the device memory -> { action: 'get_historical_over_bp' }
+BP550LTModule.disconnect(mac);
+// Errors: { action: 'error_bp', error, description }
 ```
 
 ---
@@ -692,6 +725,7 @@ BTMModule.disconnect(mac);
 | Blood Pressure | BP7 | `BP7Module` | iOS & Android |
 | Blood Pressure | BP7S | `BP7SModule` | iOS & Android |
 | Blood Pressure | KN-550BT | `BP550BTModule` | iOS & Android |
+| Blood Pressure | KN-550LT | `BP550LTModule` | iOS & Android |
 | Pulse Oximeter | PO3 | `PO3Module` | iOS & Android |
 | Pulse Oximeter | PO1 | `PO1Module` | iOS & Android |
 | Body Scale | HS2S | `HS2SModule` | iOS & Android |
@@ -769,6 +803,11 @@ A: If you are upgrading to React Native >= 0.76 and enabling the New Architectur
 ---
 
 ## Release Notes
+
+### v2.1.0
+- **New device: KN-550LT blood pressure monitor** (`BP550LTModule`, device type `iHealthDeviceManagerModule.KN550LT`) on iOS and Android
+- Native SDKs upgraded: iOS `libiHealthSDK2.15.0.a`, Android `iHealthSDK_2.16.0.jar`
+- iOS: added `BPProfileModule sendErrorToEmitter:` so BP error events are delivered in RN 0.81+
 
 ### v2.0.1
 - Hardened SDK module initialization: `RCTModule.addListener()` calls are now wrapped in `typeof` checks and `try/catch` to prevent rare crashes during React Native bootstrap on the Old Architecture
