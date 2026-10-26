@@ -41,6 +41,13 @@ RCT_EXPORT_MODULE()
     return YES;
 }
 
+// The SDK arms its 3 s command timeouts with NSTimer on the calling thread. RN's default module queue is a GCD
+// queue without a run loop, so those timers never fire and a device that does not answer leaves JS waiting forever.
+- (dispatch_queue_t)methodQueue
+{
+    return dispatch_get_main_queue();
+}
+
 #pragma mark - Init
 
 -(id)init

@@ -116,9 +116,14 @@ async function requestBluetoothPermissions() {
 }
 ```
 
-### 3. SDK License Authentication (Android only)
+### 3. SDK License Authentication
 
-Place the `.pem` license file provided by iHealth into `android/app/src/main/assets/`, then call the following once on app startup:
+The `.pem` license file provided by iHealth is bound to your app's bundle identifier (iOS) / package name (Android).
+
+- **Android:** place the file in `android/app/src/main/assets/`.
+- **iOS:** add the file to your app target in Xcode (Target Membership checked, so it is copied into the app bundle).
+
+Then call the following once on app startup, before scanning:
 
 ```javascript
 import { iHealthDeviceManagerModule } from '@ihealth/ihealthlibrary-react-native';
@@ -126,7 +131,11 @@ import { iHealthDeviceManagerModule } from '@ihealth/ihealthlibrary-react-native
 iHealthDeviceManagerModule.sdkAuthWithLicense('your_license_file.pem');
 ```
 
-> **iOS does not require license authentication.**
+The result arrives as `Event_Authenticate_Result` (`{ access }`).
+
+> On iOS, scanning and connecting do nothing — no devices are found and no error is reported — until a license matching the app's bundle identifier has been validated.
+>
+> On Android the native SDK is initialized when the app first comes to the foreground; a call made before that reports `access: false`. If that happens, call it again shortly afterwards.
 
 ### 4. Enable New Architecture (optional, recommended for RN 0.76+)
 
@@ -387,8 +396,8 @@ managerEmitter.addListener(
   iHealthDeviceManagerModule.Event_Device_Disconnect, handler
 );
 
-// SDK license authentication result (Android only)
-// Payload: { authen: boolean }
+// SDK license authentication result
+// Payload: { access: boolean } (iOS reports 1 / 0)
 managerEmitter.addListener(
   iHealthDeviceManagerModule.Event_Authenticate_Result, handler
 );
@@ -471,7 +480,6 @@ BP550BTModule.disconnect(mac);
 ### Blood Pressure Monitor — KN-550LT (BP550LTModule)
 
 KN-550LT has no online measurement; results are read back from the device memory.
-Payloads are identical on iOS and Android.
 
 ```javascript
 import { BP550LTModule, iHealthDeviceManagerModule } from '@ihealth/ihealthlibrary-react-native';
@@ -487,7 +495,9 @@ emitter.addListener(BP550LTModule.Event_Notify, (event) => {
 BP550LTModule.getAllConnectedDevices(); // { action: 'action_get_all_connected_devices', devices: [...] }
 BP550LTModule.getFirmVersion(mac);      // { action: 'action_get_firmwareVersion', firmwareVersion, hardwareVersion }
 BP550LTModule.getBattery(mac);          // { action: 'battery_bp', battery }
-BP550LTModule.getFunctionInfo(mac);     // { action: 'function_info_bp', haveOffline, memoryGroup, maxMemoryCapacity, ... }
+BP550LTModule.getFunctionInfo(mac);     // { action: 'function_info_bp', haveOffline, haveShowUnitSetting, showUnit, ... }
+                                        //   memoryGroup / maxMemoryCapacity only when the native SDK reports them
+                                        //   (the iOS SDK does not)
 BP550LTModule.getOffLineNum(mac);       // { action: 'offlinenum', offlinenum }
 BP550LTModule.getOffLineData(mac);      // { action: 'historicaldata_bp', data: [{ time, sys, dia, heartRate,
                                         //   arrhythmia, body_movement, cuff_loose, time_calibration, dataID }] }
@@ -496,6 +506,10 @@ BP550LTModule.transferFinished(mac);    // deletes the device memory -> { action
 BP550LTModule.disconnect(mac);
 // Errors: { action: 'error_bp', error, description }
 ```
+
+Wait for the reply to a call before sending the same call again: two identical calls in flight are answered only once.
+A device that does not answer within 3 s produces `error_bp` with `error: 404`. `connectDevice` may not report
+`Event_Device_Connect_Failed` when the device is out of range, so keep your own timeout for connections.
 
 ---
 
@@ -780,6 +794,9 @@ A: Delete the `ios/Pods` directory and run `cd ios && pod install` again.
 **Q: Android method calls have no effect.**  
 A: Confirm that the `.pem` license file is present in `android/app/src/main/assets/` and that `sdkAuthWithLicense()` was called at app startup.
 
+**Q: iOS scanning never finds a device (and reports no error).**  
+A: Add the `.pem` license file to the app target, call `sdkAuthWithLicense()` before scanning and check that `Event_Authenticate_Result` reports `access: 1`. The license must match the app's bundle identifier.
+
 **Q: `NativeModules.XXXModule` is `null`.**  
 A: ECG3 and ECG3USB are iOS-only. They will be `null` on Android. Use `Platform.OS === 'ios'` before accessing these modules.
 
@@ -808,6 +825,8 @@ A: If you are upgrading to React Native >= 0.76 and enabling the New Architectur
 - **New device: KN-550LT blood pressure monitor** (`BP550LTModule`, device type `iHealthDeviceManagerModule.KN550LT`) on iOS and Android
 - Native SDKs upgraded: iOS `libiHealthSDK2.15.0.a`, Android `iHealthSDK_2.16.0.jar`
 - iOS: added `BPProfileModule sendErrorToEmitter:` so BP error events are delivered in RN 0.81+
+- iOS: `BP550LTModule` runs on the main queue so the native 3 s command timeouts fire (`error_bp` 404 instead of no reply)
+- Android: declares the SQLCipher dependencies required by `iHealthSDK_2.16.0.jar` (`net.zetetic:sqlcipher-android`, `androidx.sqlite:sqlite`)
 
 ### v2.0.1
 - Hardened SDK module initialization: `RCTModule.addListener()` calls are now wrapped in `typeof` checks and `try/catch` to prevent rare crashes during React Native bootstrap on the Old Architecture
