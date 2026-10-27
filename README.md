@@ -504,12 +504,31 @@ BP550LTModule.getOffLineData(mac);      // { action: 'historicaldata_bp', data: 
 BP550LTModule.getTime(mac);             // { action: 'action_get_time', date }
 BP550LTModule.transferFinished(mac);    // deletes the device memory -> { action: 'get_historical_over_bp' }
 BP550LTModule.disconnect(mac);
-// Errors: { action: 'error_bp', error, description }
+// Errors (iOS): { action: 'error_bp', error, description }; Android: see the differences table below
 ```
 
-Wait for the reply to a call before sending the same call again: two identical calls in flight are answered only once.
-A device that does not answer within 3 s produces `error_bp` with `error: 404`. `connectDevice` may not report
-`Event_Device_Connect_Failed` when the device is out of range, so keep your own timeout for connections.
+Wait for the reply to a call before sending the same call again: on iOS two identical calls in flight are answered
+only once. `connectDevice` may not report `Event_Device_Connect_Failed` when the device is out of range, so keep your
+own timeout for connections.
+
+#### KN-550LT: iOS and Android differences
+
+The normal flow (scan, connect, every call above, delete, disconnect) behaves the same on both platforms. Error and
+timeout handling differs:
+
+| Situation | iOS | Android |
+|---|---|---|
+| Call before connecting, with an unknown MAC, or after disconnecting | `Event_Notify` `{ action: 'error_bp', description: 'device is disconnected.' }` | Separate event `'Error'` with `{ errorid: 400 }`; nothing on `Event_Notify`. Listen with `emitter.addListener('Error', …)` |
+| Device does not answer a call | `error_bp` with `error: 404` after 3 s | No error event. The SDK disconnects about 30 s later (`Event_Device_Disconnect`) |
+| Device answers slowly (over 3 s) | `error_bp` with `error: 404`; the late answer is dropped | The SDK resends the command; every late answer is delivered, so the same reply can arrive more than once |
+| Device rejects authentication or does not answer it | `Event_Device_Connect_Failed` | No event |
+| `stopDiscovery()` | `Event_Scan_Finish` | No event (`Event_Scan_Finish` only when the scan ends by itself) |
+| `getFunctionInfo` | No `memoryGroup` / `maxMemoryCapacity`; `showUnit` is 0 or 1 | Includes `memoryGroup` / `maxMemoryCapacity`; `showUnit` is the raw device value (e.g. 32 for kPa) |
+| Scan result | `{ mac, type }` | `{ mac, type, rssi }` |
+| Same call sent twice without waiting | Answered once | Answered twice |
+
+On Android, run your own timeout for each call and for `connectDevice`, treat `Event_Device_Disconnect` as the end of
+any pending call, and ignore duplicate replies.
 
 ---
 
@@ -827,6 +846,7 @@ A: If you are upgrading to React Native >= 0.76 and enabling the New Architectur
 - iOS: added `BPProfileModule sendErrorToEmitter:` so BP error events are delivered in RN 0.81+
 - iOS: `BP550LTModule` runs on the main queue so the native 3 s command timeouts fire (`error_bp` 404 instead of no reply)
 - Android: declares the SQLCipher dependencies required by `iHealthSDK_2.16.0.jar` (`net.zetetic:sqlcipher-android`, `androidx.sqlite:sqlite`)
+- KN-550LT: iOS / Android differences in error and timeout handling are listed in the KN-550LT section
 
 ### v2.0.1
 - Hardened SDK module initialization: `RCTModule.addListener()` calls are now wrapped in `typeof` checks and `try/catch` to prevent rare crashes during React Native bootstrap on the Old Architecture
